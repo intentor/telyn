@@ -6,6 +6,8 @@
 
 The game is based on Celtic Mythology, with a story of treason among gods and the journey of a druid trying to restore the harmony of the nature in our world.
 
+![telyn_game-spring](https://cloud.githubusercontent.com/assets/5340818/6246681/d1b7d998-b752-11e4-9ca7-d51f39fcc21f.jpg) ![telyn_game-winter](https://cloud.githubusercontent.com/assets/5340818/6246718/3b0847d4-b753-11e4-9fdb-d046502855af.jpg) ![telyn_game-summer](https://cloud.githubusercontent.com/assets/5340818/6246719/3bdd9f1a-b753-11e4-939d-52fdf41072e6.jpg)
+
 The project is in Java 6 and all the comments and documentations are in Brazilian Portuguese.
 
 *Telyn* uses [Slick2D](http://slick.ninjacave.com/) and [JBox2D](http://www.jbox2d.org/).
