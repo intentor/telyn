@@ -1,0 +1,5 @@
+SpriteMaster Pro
+
+v1.00
+-----
+Rework of SpriteMaster

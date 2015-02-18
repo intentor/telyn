@@ -1,0 +1,182 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>SpriteMaster Pro - Type Structure</title>
+</head>
+
+<body>
+
+<h1><font face="Tahoma">SpriteMaster Pro</font></h1>
+
+<h2><font size="4" face="Tahoma"><strong>Type structure -
+smSprite</strong></font></h2>
+
+<hr>
+
+<p><font size="2" face="Courier">SpriteMaster Pro uses types to
+maintain the sprites created, loaded, and extracted (from packs).<br>
+The table below shows the structures field names and their role
+in SpriteMaster Pro.</font></p>
+
+<p><font size="2" face="Courier">The name of the type is </font><font
+color="#008000" size="2" face="Courier"><strong>.smSprite</strong></font></p>
+
+<p><font size="2" face="Courier">Most of the commands/functions
+rely on the type structure:</font></p>
+
+<table border="0" bgcolor="#000000">
+    <tr>
+        <td><font color="#00FF00" size="2" face="Courier">pack1=LoadPack(&quot;brick.png&quot;)<br>
+        ball.smSprite=GetPackedSprite(&quot;bigball&quot;,pack1)<br>
+        DebugLog ball\width ; returns width of ball sprite</font></td>
+    </tr>
+</table>
+
+<p><font size="2" face="Courier">If you modify any of the fields
+you should use the appropriate command to update the sprite:</font></p>
+
+<table border="0" bgcolor="#000000">
+    <tr>
+        <td><font color="#00FF00" size="2" face="Courier">pack1=LoadPack(&quot;brick.png&quot;)<br>
+        ball.smSprite=GetPackedSprite(&quot;bigball&quot;,pack1)<br>
+        ball\angle=ball\angle+64<br>
+        RotateSprite ball,ball\angle</font></td>
+    </tr>
+</table>
+
+<p><font size="2" face="Courier">There are 10 spare floats in the
+type structure which you may want to take advantage of. These are
+labelled var#[0] to var#[9]<br>
+Every sprite has it's own set of 10 spare variables.</font></p>
+
+<p><font color="#FF0000">Note: There are other variables in the
+structure. These should not be modified.<br>
+<em>See the smPro.bb include for more information.</em></font></p>
+
+<hr>
+
+<table border="2" cellpadding="2" cellspacing="0"
+bgcolor="#808080" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="3" bgcolor="#8F8F8F"><p align="center"><font
+        size="5" face="Courier"><strong>.smSprite</strong></font></p>
+        </td>
+    </tr>
+    <tr>
+        <td bgcolor="#C0C0C0"><font face="Courier"><strong>Parameter</strong></font></td>
+        <td bgcolor="#C0C0C0"><font face="Courier"><strong>Info</strong></font></td>
+        <td bgcolor="#C0C0C0"><font face="Courier"><strong>Update
+        with</strong></font></td>
+    </tr>
+    <tr>
+        <td bgcolor="#FFFFFF"><font face="Courier">name$</font></td>
+        <td bgcolor="#FFFFFF"><font face="Courier">sprites name</font></td>
+        <td bgcolor="#FFFFFF"><font face="Courier">n/a</font></td>
+    </tr>
+    <tr>
+        <td bgcolor="#FFFFFF"><font face="Courier">x#</font></td>
+        <td bgcolor="#FFFFFF"><font face="Courier">x position on
+        screen (in pixels)</font></td>
+        <td bgcolor="#FFFFFF"><font face="Courier">PostionSprite</font></td>
+    </tr>
+    <tr>
+        <td bgcolor="#FFFFFF"><font face="Courier">y#</font></td>
+        <td bgcolor="#FFFFFF"><font face="Courier">y position on
+        screen (in pixels)</font></td>
+        <td bgcolor="#FFFFFF"><font face="Courier">PostionSprite</font></td>
+    </tr>
+    <tr>
+        <td bgcolor="#FFFFFF"><font face="Courier">width</font></td>
+        <td bgcolor="#FFFFFF"><font face="Courier">width (in
+        pixels)</font></td>
+        <td bgcolor="#FFFFFF"><font face="Courier">ResizeSprite</font></td>
+    </tr>
+    <tr>
+        <td bgcolor="#FFFFFF"><font face="Courier">height</font></td>
+        <td bgcolor="#FFFFFF"><font face="Courier">height (in
+        pixels)</font></td>
+        <td bgcolor="#FFFFFF"><font face="Courier">ResizeSprite</font></td>
+    </tr>
+    <tr>
+        <td bgcolor="#FFFFFF"><font face="Courier">handleX</font></td>
+        <td bgcolor="#FFFFFF"><font face="Courier">handle/axis
+        offset (X)</font></td>
+        <td bgcolor="#FFFFFF"><font face="Courier">HandleSprite</font></td>
+    </tr>
+    <tr>
+        <td bgcolor="#FFFFFF"><font face="Courier">handleY</font></td>
+        <td bgcolor="#FFFFFF"><font face="Courier">handle/axis
+        offset (Y)</font></td>
+        <td bgcolor="#FFFFFF"><font face="Courier">HandleSprite</font></td>
+    </tr>
+    <tr>
+        <td bgcolor="#FFFFFF"><font face="Courier">angle#</font></td>
+        <td bgcolor="#FFFFFF"><font face="Courier">sprites
+        rotated angle</font></td>
+        <td bgcolor="#FFFFFF"><font face="Courier">RotateSprite</font></td>
+    </tr>
+    <tr>
+        <td bgcolor="#FFFFFF"><font face="Courier">flippedX</font></td>
+        <td bgcolor="#FFFFFF"><font face="Courier">TRUE if sprite
+        is flipped horizontally</font></td>
+        <td bgcolor="#FFFFFF"><font face="Courier">FlipSprite</font></td>
+    </tr>
+    <tr>
+        <td bgcolor="#FFFFFF"><font face="Courier">flippedY</font></td>
+        <td bgcolor="#FFFFFF"><font face="Courier">TRUE if sprite
+        is flipped vertically</font></td>
+        <td bgcolor="#FFFFFF"><font face="Courier">FlipSprite</font></td>
+    </tr>
+    <tr>
+        <td bgcolor="#FFFFFF"><font face="Courier">frame</font></td>
+        <td bgcolor="#FFFFFF"><font face="Courier">current frame
+        in use (animation)</font></td>
+        <td bgcolor="#FFFFFF"><font face="Courier">PostionSprite</font></td>
+    </tr>
+    <tr>
+        <td bgcolor="#FFFFFF"><font face="Courier">numframes</font></td>
+        <td bgcolor="#FFFFFF"><font face="Courier">total of
+        animation frames in sprite</font></td>
+        <td bgcolor="#FFFFFF"><font face="Courier">n/a</font></td>
+    </tr>
+    <tr>
+        <td bgcolor="#FFFFFF"><font face="Courier">red</font></td>
+        <td bgcolor="#FFFFFF"><font face="Courier">Red component
+        color (0 to 255)</font></td>
+        <td bgcolor="#FFFFFF"><font face="Courier">SpriteColor</font></td>
+    </tr>
+    <tr>
+        <td bgcolor="#FFFFFF"><font face="Courier">green</font></td>
+        <td bgcolor="#FFFFFF"><font face="Courier">Green
+        component color (0 to 255)</font></td>
+        <td bgcolor="#FFFFFF"><font face="Courier">SpriteColor</font></td>
+    </tr>
+    <tr>
+        <td bgcolor="#FFFFFF"><font face="Courier">blue</font></td>
+        <td bgcolor="#FFFFFF"><font face="Courier">Blue component
+        color (0 to 255)</font></td>
+        <td bgcolor="#FFFFFF"><font face="Courier">SpriteColor</font></td>
+    </tr>
+    <tr>
+        <td bgcolor="#FFFFFF"><font face="Courier">alpha#</font></td>
+        <td bgcolor="#FFFFFF"><font face="Courier">alpha value
+        (0.0 to 1.0)</font></td>
+        <td bgcolor="#FFFFFF"><font face="Courier">SpriteAlpha</font></td>
+    </tr>
+    <tr>
+        <td bgcolor="#FFFFFF"><font face="Courier">var#[9]</font></td>
+        <td bgcolor="#FFFFFF"><font face="Courier">spare
+        variables for your own use</font></td>
+        <td bgcolor="#FFFFFF"><font face="Courier">n/a</font></td>
+    </tr>
+</table>
+
+<hr>
+
+<p><a href="sm.htm"><font face="Tahoma">Main Page</font></a></p>
+</body>
+</html>

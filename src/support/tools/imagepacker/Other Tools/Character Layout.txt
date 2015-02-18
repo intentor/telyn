@@ -1,0 +1,24 @@
+This character set shows you how
+SpriteMasterPro uses a font set.
+When generating fonts with tools
+such as FONText try to ensure the
+characters obey this sequence:
+
+
+!"#$%&'()*+,-./
+0123456789:;<=>
+?@ABCDEFGHIJKLM
+NOPQRSTUVWXYZ[\
+]^_`abcdefghijk
+lmnopqrstuvwxyz
+{|}~
+
+SPriteText expects the first
+character to be !
+If your charater set starts with
+a SPACE then use an offset of 1
+in the SPriteText paramater.
+
+Example:
+
+SpriteText mytextsprite,"Hello",1

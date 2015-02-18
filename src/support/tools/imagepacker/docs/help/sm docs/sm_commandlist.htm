@@ -1,0 +1,172 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>SpriteMaster Pro - Command List</title>
+</head>
+
+<body>
+
+<h1><font face="Tahoma">SpriteMaster Pro</font></h1>
+
+<h3><font face="Tahoma">Commands and Functions</font></h3>
+
+<hr>
+
+<h2><font size="2" face="Courier">Sprite display setup</font></h2>
+
+<blockquote>
+    <p><a href="sm_commands.htm#SpriteGraphics"><font size="2"
+    face="Courier">SpriteGraphics</font></a><font size="2"
+    face="Courier">
+    width,height[,depth][,viewmode][,pivotdistance]<br>
+    </font><a href="sm_commands.htm#EndSpriteGraphics"><font
+    size="2" face="Courier">EndSpriteGraphics</font></a><font
+    size="2" face="Courier"><br>
+    </font><a href="sm_commands.htm#CreateSpritePivot"><font
+    size="2" face="Courier">CreateSpritePivot</font></a><font
+    size="2" face="Courier">(camera[,pivotdistance#])<br>
+    </font><a href="sm_commands.htm#SpriteCameraZoom"><font
+    size="2" face="Courier">SpriteCameraZoom</font></a><font
+    size="2" face="Courier"> camera,zoomvalue#</font></p>
+</blockquote>
+
+<h3><font size="2" face="Courier">Packs</font></h3>
+
+<blockquote>
+    <p><a href="sm_commands.htm#LoadPack"><font size="2"
+    face="Courier">LoadPack</font></a><font size="2"
+    face="Courier">(filename$[,flags])<br>
+    </font><a href="sm_commands.htm#GetPackedSprite"><font
+    size="2" face="Courier">GetPackedSprite</font></a><font
+    size="2" face="Courier">(ref$,pack[,rX][,rY][,rW][,rH])<br>
+    </font><a href="sm_commands.htm#GetPackedImage"><font
+    size="2" face="Courier">GetPackedImage</font></a><font
+    size="2" face="Courier">(ref$,pack)<br>
+    </font><a href="sm_commands.htm#GetPackedTexture"><font
+    size="2" face="Courier">GetPackedTexture</font></a><font
+    size="2" face="Courier">(ref$,pack)<br>
+    </font><a href="sm_commands.htm#CountPackedImages"><font
+    size="2" face="Courier">CountPackedImages</font></a><font
+    size="2" face="Courier">(pack)<br>
+    </font><a href="sm_commands.htm#PackedImageName"><font
+    size="2" face="Courier">PackedImageName$</font></a><font
+    size="2" face="Courier">(index,pack)<br>
+    </font><a href="sm_commands.htm#PackedImageFrames"><font
+    size="2" face="Courier">PackedImageFrames</font></a><font
+    size="2" face="Courier">(ref$,pack)<br>
+    </font><a href="sm_commands.htm#CountSpritesUsingPack"><font
+    size="2" face="Courier">CountSpritesUsingPack</font></a><font
+    size="2" face="Courier">(pack)<br>
+    </font><a href="sm_commands.htm#FreePack"><font size="2"
+    face="Courier">FreePack</font></a><font size="2"
+    face="Courier"> pack<br>
+    </font><a href="sm_commands.htm#GetPack"><font size="2"
+    face="Courier">GetPack</font></a><font size="2"
+    face="Courier">(sprite)</font></p>
+</blockquote>
+
+<h3><font size="2" face="Courier">Sprite - Single</font></h3>
+
+<blockquote>
+    <p><a href="sm_commands.htm#CreateSprite"><font size="2"
+    face="Courier">CreateSprite</font></a><font size="2"
+    face="Courier">(width,height[,framesH][,framesV][,flags][,parent])<br>
+    </font><a href="sm_commands.htm#LoadSprite"><font size="2"
+    face="Courier">LoadSprite</font></a><font size="2"
+    face="Courier">(filename[,flags][,parent])</font></p>
+</blockquote>
+
+<h3><font size="2" face="Courier">Sprite - Text</font></h3>
+
+<blockquote>
+    <p><a href="sm_commands.htm#CreateTextSprite"><font size="2"
+    face="Courier">CreateTextSprite</font></a><font size="2"
+    face="Courier">(filename$[,charoffset][,flags])<br>
+    </font><a href="sm_commands.htm#AddText"><font size="2"
+    face="Courier">AddText</font></a><font size="2"
+    face="Courier">
+    sprite,x,y,textstring$[,red][,green][,blue][,alpha]<br>
+    </font><a href="sm_commands.htm#ClearText"><font size="2"
+    face="Courier">ClearText</font></a><font size="2"
+    face="Courier"> sprite</font></p>
+</blockquote>
+
+<h3><font size="2" face="Courier">Sprite - Display and animation</font></h3>
+
+<blockquote>
+    <p><a href="sm_commands.htm#PositonSprite"><font size="2"
+    face="Courier">PositonSprite</font></a><font size="2"
+    face="Courier"> sprite,x#,y#[,frame]<br>
+    </font><a href="sm_commands.htm#RotateSprite"><font size="2"
+    face="Courier">RotateSprite</font></a><font size="2"
+    face="Courier"> sprite[,angle#]<br>
+    </font><a href="sm_commands.htm#ResizeSprite"><font size="2"
+    face="Courier">ResizeSprite</font></a><font size="2"
+    face="Courier"> sprite[,width][,height]<br>
+    </font><a href="sm_commands.htm#FlipSprite"><font size="2"
+    face="Courier">FlipSprite</font></a><font size="2"
+    face="Courier"> sprite[,horizontally][,vertically]<br>
+    </font><a href="sm_commands.htm#HandleSprite"><font size="2"
+    face="Courier">HandleSprite</font></a><font size="2"
+    face="Courier"> sprite[,handleX#][,handleY#]<br>
+    </font><a href="sm_commands.htm#SetSprite"><font size="2"
+    face="Courier">SetSprite</font></a><font size="2"
+    face="Courier">
+    sprite,frame,x#,y#[,w#][,h#][,rot#][,r][,g][,b][,alpha#]<br>
+    </font><a href="sm_commands.htm#ChangeSprite"><font size="2"
+    face="Courier">ChangeSprite</font></a><font size="2"
+    face="Courier"> sprite,ref$,[,rX][,rY][,rW][,rH])<br>
+    </font><a href="sm_commands.htm#ResetSprite"><font size="2"
+    face="Courier">ResetSprite</font></a><font size="2"
+    face="Courier"> sprite<br>
+    </font></p>
+</blockquote>
+
+<h3><font size="2" face="Courier">Sprite - Properties</font></h3>
+
+<blockquote>
+    <p><a href="sm_commands.htm#SpriteColor"><font size="2"
+    face="Courier">SpriteColor</font></a><font size="2"
+    face="Courier"> sprite[,red][,green][,blue][,alpha#]<br>
+    </font><a href="sm_commands.htm#SpriteAlpha"><font size="2"
+    face="Courier">SpriteAlpha</font></a><font size="2"
+    face="Courier"> sprite[,alpha#]<br>
+    </font><a href="sm_commands.htm#SpriteName"><font size="2"
+    face="Courier">SpriteName$</font></a><font size="2"
+    face="Courier">(index,pack)</font></p>
+</blockquote>
+
+<blockquote>
+    <p><a href="sm_commands.htm#GetSpriteMesh"><font size="2"
+    face="Courier">GetSpriteMesh</font></a><font size="2"
+    face="Courier">(sprite)<br>
+    </font><a href="sm_commands.htm#SpriteTexture"><font size="2"
+    face="Courier">SpriteTexture</font></a><font size="2"
+    face="Courier"> sprite,texture<br>
+    </font><a href="sm_commands.htm#GetSpriteTexture"><font
+    size="2" face="Courier">GetSpriteTexture</font></a><font
+    size="2" face="Courier">(sprite)</font></p>
+</blockquote>
+
+<p><font size="2" face="Courier"><strong>Sprite - Other</strong></font></p>
+
+<blockquote>
+    <p align="left"><a href="sm_commands.htm#SpritesOverlap"><font
+    size="2" face="Courier">SpritesOverlap</font></a><font
+    size="2" face="Courier">(sprite1,sprite2)<br>
+    </font><a href="sm_commands.htm#CopySprite"><font size="2"
+    face="Courier">CopySprite</font></a><font size="2"
+    face="Courier">(sprite)<br>
+    </font><a href="sm_commands.htm#FreeSprite"><font size="2"
+    face="Courier">FreeSprite</font></a><font size="2"
+    face="Courier"> sprite</font></p>
+</blockquote>
+
+<hr>
+
+<p><a href="index.htm"><font face="Tahoma">Main Page</font></a></p>
+</body>
+</html>

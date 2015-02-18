@@ -1,0 +1,10 @@
+Telyn
+http://games.intentor.com.br/telyn/
+Copyright (C) 2011 Escape2Team
+André "Intentor" Martins
+Gabriel da Gama Roque
+
+DESCRIPTION
+2D Platform Game Engine based on Slick Library.
+
+More information please contact <intentor@intentor.com.br>.

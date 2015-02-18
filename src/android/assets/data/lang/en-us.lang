@@ -1,0 +1,7 @@
+title=Telyn
+moveToStart=Move to start
+howplay=How to play
+credits=Credits
+resume=Back
+exit=Exit game
+creditsroll=TELYN\nPresentation Version\n\n- Game Programming -\nAndré "Intentor" Martins\n\n- Graphics and Animations -\nGabriel da Gama Roque\n\n- Audio Programming -\nAndré "Intentor" Martins\n\n- Music and Sound Effects -\nAndré "Intentor" Martins\n\n- Script -\nAndré "Intentor" Martins\nGabriel da Gama Roque\n\n- Localization -\nAndré "Intentor" Martins\n\n- Documentation -\nAndré "Intentor" Martins\nGabriel da Gama Roque\n\nCREATED WITH\n\nSlick\nhttp://slick.cokeandcode.com/\n\nBox2D\nhttp://www.box2d.org/\n\nLWJGL\nhttp://lwjgl.org/\n\nlibgdx\nhttp://code.google.com/p/libgdx/\n\n\n\n2011 - Escape2Team

@@ -1,0 +1,186 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>SpriteMaster Pro - Getting Started</title>
+</head>
+
+<body>
+
+<h1><font face="Tahoma">SpriteMaster Pro</font></h1>
+
+<h3><font face="Tahoma">Getting Started</font></h3>
+
+<hr>
+
+<p><font face="Courier">The best way to understand how to use
+spriteMaster Pro is to play with the examples. Most of the
+commands are covered by an example.</font></p>
+
+<p><font face="Courier">What follows is a step by step guide to
+get you up and running.</font></p>
+
+<hr>
+
+<p><font face="Courier">The first thing you should to do is
+include the SpriteMaster Pro include file. The name of this file
+is </font><font color="#808080" face="Courier"><strong>smPro.bb</strong></font></p>
+
+<table border="0" bgcolor="#000000">
+    <tr>
+        <td><font color="#00FF00" face="Courier">Include
+        &quot;smPro.bb&quot;</font></td>
+    </tr>
+</table>
+
+<hr>
+
+<p><font color="#000000" face="Courier">Now, you initialse the
+display with:</font></p>
+
+<table border="0" bgcolor="#000000">
+    <tr>
+        <td><font color="#00FF00" face="Courier">SpriteGraphics
+        width,height</font></td>
+    </tr>
+</table>
+
+<hr>
+
+<p><font color="#000000" face="Courier">Once the display is set
+up you can go ahead and create / load your sprites. SpriteMaster
+Pro can deal with several types of sprites:</font></p>
+
+<table border="0">
+    <tr>
+        <td bgcolor="#FFFFFF"><a
+        href="sm_commands.htm#CreateSprite"><font color="#000000"
+        face="Courier"><strong>CreateSprite()</strong></font></a></td>
+        <td bgcolor="#FFFFFF"><font color="#000000"
+        face="Courier">Create a blank separate-surface sprite</font></td>
+    </tr>
+    <tr>
+        <td bgcolor="#FFFFFF"><a
+        href="sm_commands.htm#LoadSprite"><font color="#000000"
+        face="Courier"><strong>LoadSprite()</strong></font></a></td>
+        <td bgcolor="#FFFFFF"><font color="#000000"
+        face="Courier">Load and create a separate-surface sprite</font></td>
+    </tr>
+    <tr>
+        <td bgcolor="#FFFFFF"><a
+        href="sm_commands.htm#GetPackedSprite"><font
+        color="#000000" face="Courier"><strong>GetPackedSprite()</strong></font></a></td>
+        <td bgcolor="#FFFFFF"><font color="#000000"
+        face="Courier">Get a sprite from a loaded pack</font></td>
+    </tr>
+    <tr>
+        <td bgcolor="#FFFFFF"><a
+        href="sm_commands.htm#CreateTextSprite"><font
+        color="#000000" face="Courier"><strong>CreateTextSprite()</strong></font></a></td>
+        <td bgcolor="#FFFFFF"><font color="#000000"
+        face="Courier">Create a text sprite from a font set</font></td>
+    </tr>
+</table>
+
+<p><font color="#000000" face="Courier">Each of the above
+functions will return a pointer to a </font><font color="#008040"
+face="Courier"><strong>.smSprite</strong></font><font
+color="#000000" face="Courier"> type (used by SpriteMaster Pro).
+See </font><a href="sm_typestruct.htm"><font color="#000000"
+face="Courier">SpriteMaster Pro - Type Structure</font></a><font
+color="#000000" face="Courier"><br>
+Your variable which handles the sprite needs to be a </font><font
+color="#008000" face="Courier"><strong>.smSprite</strong></font><font
+color="#000000" face="Courier"> type. This example shows </font><a
+href="sm_commands.htm#CreateSprite"><font color="#000000"
+face="Courier"><strong>CreateSprite()</strong></font></a><font
+color="#000000" face="Courier"> in action:</font></p>
+
+<table border="0" bgcolor="#000000">
+    <tr>
+        <td><font color="#00FF00" face="Courier">blanksprite.smSprite=CreateSprite(64,20)<br>
+        PositionSprite blanksprite,50,60</font></td>
+    </tr>
+</table>
+
+<p><font color="#000000" face="Courier">Refer to </font><a
+href="sm_commandlist.htm"><font color="#000000" face="Courier">commands
+and functions</font></a><font color="#000000" face="Courier"> for
+more information.</font></p>
+
+<hr>
+
+<p><font color="#000000" face="Courier">Now you have your sprites
+created/loaded you can position, resize, rotate , re-color,
+change alpha etc... Check the commands under:</font></p>
+
+<p><font color="#000000" face="Courier"><strong>Sprite - Display
+and animation </strong>in </font><a href="sm_commandlist.htm"><font
+color="#000000" face="Courier">commands and functions</font></a><font
+color="#000000" face="Courier">.</font></p>
+
+<hr>
+
+<p><font color="#000000" face="Courier">The final part is to use
+Blitz3D's <strong>RenderWorld</strong> / <strong>Flip</strong> to
+show the sprites.<br>
+Here is a simple working example:</font></p>
+
+<table border="0" bgcolor="#000000">
+    <tr>
+        <td><font color="#00FF00" face="Courier">;
+        SpriteMasterPro - Basic example<br>
+        <br>
+        Include &quot;smPro.bb&quot;<br>
+        <br>
+        SpriteGraphics 230,240,0,2 ; set up sprite display<br>
+        pack1=LoadPack(&quot;testpack.png&quot;) ; load pack<br>
+        sprite.smSprite=GetPackedSprite(&quot;sun&quot;,pack1) ;
+        extract sprite<br>
+        PositionSprite sprite,50,60 ; position sprite<br>
+        <br>
+        RenderWorld : Flip : WaitKey<br>
+        <br>
+        FreePack pack1 ; free up pack and extracted sprite<br>
+        EndSpriteGraphics ; close down sprite display<br>
+        End</font></td>
+    </tr>
+</table>
+
+<hr>
+
+<p><font color="#000000" face="Courier">Before you go there are a
+couple of functions to keep things clean in SpriteMaster Pro:</font></p>
+
+<table border="0">
+    <tr>
+        <td bgcolor="#FFFFFF"><a href="sm_commands.htm#FreePack"><font
+        color="#000000" face="Courier"><strong>FreePack</strong></font></a></td>
+        <td bgcolor="#FFFFFF"><font color="#000000"
+        face="Courier">Free up a loaded pack and any sprites
+        which are using the pack</font></td>
+    </tr>
+    <tr>
+        <td bgcolor="#FFFFFF"><a
+        href="sm_commands.htm#FlipSprite"><font color="#000000"
+        face="Courier"><strong>FreeSprite</strong></font></a></td>
+        <td bgcolor="#FFFFFF"><font color="#000000"
+        face="Courier">Free up an individual sprite</font></td>
+    </tr>
+    <tr>
+        <td bgcolor="#FFFFFF"><a
+        href="sm_commands.htm#EndSpriteGraphics"><font
+        color="#000000" face="Courier"><strong>EndSpriteGraphics</strong></font></a></td>
+        <td bgcolor="#FFFFFF"><font color="#000000"
+        face="Courier">Free up all sprites, textures, meshes,
+        types used by SpriteMaster Pro etc ...</font></td>
+    </tr>
+</table>
+
+<hr>
+
+<p><a href="index.htm"><font face="Tahoma">Main Page</font></a></p>
+</body>
+</html>

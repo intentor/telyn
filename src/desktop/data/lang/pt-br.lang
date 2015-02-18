@@ -1,0 +1,8 @@
+title=Telyn
+moveToStart=Mova o personagem para começar
+howplay=Como jogar
+credits=Créditos
+resume=Continuar
+exit=Sair do jogo
+creditsroll=TELYN\nVersão 11.7.23\n\n- Programação de jogo -\nAndré "Intentor" Martins\n\n- Gráficos e Animações -\nGabriel da Gama Roque\n\n- Programação de áudio -\nAndré "Intentor" Martins\n\n- Música e Efeitos Sonoros -\nAndré "Intentor" Martins\n\n- Argumento -\nAndré "Intentor" Martins\nGabriel da Gama Roque\n\n- Localização -\nAndré "Intentor" Martins\n\n- Documentação -\nAndré "Intentor" Martins\nGabriel da Gama Roque\n\nCRIADO COM\n\nSlick\nhttp://slick.cokeandcode.com/\n\nBox2D\nhttp://www.box2d.org/\n\nLWJGL\nhttp://lwjgl.org/\n\nlibgdx\nhttp://code.google.com/p/libgdx/\n\n\n\n2011 - Escape2Team
+disclaimer=Esta é uma versão de demonstração baseada\nna sexta fase do jogo\nPara obter AJUDA, pressione ESC\n\n\nMais informações sobre o projeto em\nhttp://intentor.com.br/projects/telyn/\n\n\nClique com o botão esquerdo do mouse para continuar

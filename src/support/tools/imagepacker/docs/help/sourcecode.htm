@@ -1,0 +1,266 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>Code Generation</title>
+</head>
+
+<body>
+
+<h1 align="left"><font face="Tahoma">Image Packer</font></h1>
+
+<p align="left">&nbsp;</p>
+
+<h2 align="left"><font face="Tahoma"><strong>Code Generation</strong></font></h2>
+
+<hr>
+
+<p><font face="Tahoma">ImagePacker comes with a set of code
+templates used for generating source code.<br>
+This sourcecode can then be used to test your saved pack.</font></p>
+
+<p align="left"><font face="Tahoma">When you save your pack tick
+the <strong>Generate code</strong> checkbox in the Save Pack
+dialog window.<br>
+You now have the following options:</font></p>
+
+<p align="center"><font face="Tahoma"><img src="sourcecode.gif"
+width="207" height="157"></font></p>
+
+<blockquote>
+    <p align="left"><font face="Tahoma"><strong>Global variables</strong>-
+    Tick this to make program variables 'global'</font></p>
+    <blockquote>
+        <p align="left"><font color="#808080" face="Tahoma">Example<br>
+        </font><font face="Fixedsys">Global pack=LoadPack(&quot;textures.png&quot;)</font></p>
+    </blockquote>
+    <p align="left"><font face="Tahoma"><strong>Pack name</strong>
+    - The variable name for the loaded pack in the source code<br>
+    The example here shows the pack name as <em>mypack</em></font></p>
+    <blockquote>
+        <p align="left"><font color="#808080" face="Tahoma">Example<br>
+        </font><font face="Fixedsys">mypack=LoadPack(&quot;bricks.png&quot;)</font></p>
+    </blockquote>
+    <p align="left"><font face="Tahoma"><strong>Template</strong>
+    - Which source code to generate</font></p>
+    <p align="left"><font face="Tahoma">There are a few templates
+    supplied which can generate code for</font></p>
+    <blockquote>
+        <p align="left"><a href="www.blitzbasic.com"><font
+        size="2" face="Tahoma">Blitz3D, Blitz2D, and BlitzPlus</font></a><font
+        size="2" face="Tahoma">.</font></p>
+    </blockquote>
+</blockquote>
+
+<p align="left"><font face="Tahoma">After you save your pack the
+generated source code will be placed in the same folder as the
+pack along with a copy of either </font><a href="sm/index.htm"><font
+face="Tahoma"><strong>SpriteMasterPro</strong></font></a><font
+face="Tahoma"> or </font><a href="im/index.htm"><font
+face="Tahoma"><strong>ImageMaster</strong></font></a><font
+face="Tahoma"> include.</font></p>
+
+<p align="left"><font face="Tahoma">The filename will be <em>PackViewer
+- packfilename.bb</em> where <em>packfilename</em> is the same<br>
+as the packs filename.</font></p>
+
+<p align="left"><font face="Tahoma">Here is an example of files
+created after saving a pack with generated code (using a 3D
+template):</font></p>
+
+<table border="1" cellpadding="8" cellspacing="0"
+bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td bgcolor="#C0C0C0"><font face="Tahoma"><strong>FILE</strong></font></td>
+        <td bgcolor="#C0C0C0"><font face="Tahoma"><strong>DESCRIPTION</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Tahoma">pack1.png</font></td>
+        <td><font face="Tahoma">The main pack of images</font></td>
+    </tr>
+    <tr>
+        <td><font face="Tahoma">pack1.def</font></td>
+        <td><font face="Tahoma">Definitions file for pack1.png</font></td>
+    </tr>
+    <tr>
+        <td><font face="Tahoma">PackViewer - pack1.bb</font></td>
+        <td><font face="Tahoma">The generated source code.<br>
+        Run this to test the sprites/images</font></td>
+    </tr>
+    <tr>
+        <td><font face="Tahoma">smPro.bb</font></td>
+        <td><font face="Tahoma">Include file (SpriteMaster Pro)</font></td>
+    </tr>
+</table>
+
+<hr>
+
+<h3 align="left"><font face="Tahoma"><strong>Sprites versus
+Images</strong></font></h3>
+
+<p align="left"><font face="Tahoma">The templates provided give
+the choice to generate code for both 3D sprites and 2D images.</font></p>
+
+<p align="left"><font face="Tahoma"><em>Sprites</em> are for use
+with </font><a href="sm/index.htm"><font face="Tahoma"><strong>SpriteMaster
+Pro</strong></font></a><font face="Tahoma">, the single-surface
+quad sprite system for Blitz3D.</font></p>
+
+<p align="left"><font face="Tahoma"><em>Images</em> are for use
+with </font><a href="im/index.htm"><font face="Tahoma"><strong>ImageMaster</strong></font></a><font
+face="Tahoma">, an include for Blitz2D, BlitzPlus, or Blitz3D<br>
+With ImageMaster you can extract standard Blitz 2D images from
+the pack.</font></p>
+
+<hr>
+
+<h3 align="left"><font face="Tahoma">Templates</font></h3>
+
+<p align="left"><font face="Tahoma">The templates themselves can
+be modified to suit your needs.<br>
+Or, you can create your own templates and place them in the
+ImagePacker\Templates folder.</font></p>
+
+<p align="left"><font face="Tahoma">There are some special tags
+in the code which ImagePacker uses to create the generated code:</font></p>
+
+<p align="left"><font face="Tahoma"></font>&nbsp;</p>
+
+<table border="1" cellpadding="4" cellspacing="0"
+bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td bgcolor="#808080"><strong>TAG</strong></td>
+        <td bgcolor="#C0C0C0">%COPYINCLUDEFILE%</td>
+    </tr>
+    <tr>
+        <td bgcolor="#808080"><strong>DESCRIPTION</strong></td>
+        <td bgcolor="#C0C0C0">Copies the specified include file
+        to the same folder where the code is generated. The file
+        is copied from the Includes folder in the ImagePacker
+        directory</td>
+    </tr>
+    <tr>
+        <td bgcolor="#808080"><strong>CODE EXAMPLE</strong></td>
+        <td bgcolor="#C0C0C0"><font face="Fixedsys">%COPYINCLUDEFILE%ImageMaster.bb</font></td>
+    </tr>
+</table>
+
+<p align="left"><font face="Tahoma"></font>&nbsp;</p>
+
+<table border="1" cellpadding="4" cellspacing="0"
+bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td bgcolor="#808080"><strong>TAG</strong></td>
+        <td bgcolor="#C0C0C0">%GLOB%</td>
+    </tr>
+    <tr>
+        <td bgcolor="#808080"><strong>DESCRIPTION</strong></td>
+        <td bgcolor="#C0C0C0">Replaces with '<strong>Global ' </strong>if
+        the'Global' option is selected from the Save Pack dialog
+        box</td>
+    </tr>
+    <tr>
+        <td bgcolor="#808080"><strong>CODE EXAMPLE</strong></td>
+        <td bgcolor="#C0C0C0"><font face="Fixedsys">%GLOB%pack=LoadPack()</font><p>becomes:</p>
+        <p><font face="Fixedsys">Global pack=LoadPack()</font></p>
+        </td>
+    </tr>
+</table>
+
+<p align="left"><font face="Tahoma"></font>&nbsp;</p>
+
+<table border="1" cellpadding="4" cellspacing="0"
+bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td bgcolor="#808080"><strong>TAG</strong></td>
+        <td bgcolor="#C0C0C0">%PACKNAME%</td>
+    </tr>
+    <tr>
+        <td bgcolor="#808080"><strong>DESCRIPTION</strong></td>
+        <td bgcolor="#C0C0C0">Replaces with the name entered in
+        the PackName textfield from the Save Pack<br>
+        dialog box. The example on the right assumes the name
+        entered is <strong>pack1</strong></td>
+    </tr>
+    <tr>
+        <td bgcolor="#808080"><strong>CODE EXAMPLE</strong></td>
+        <td bgcolor="#C0C0C0"><font face="Fixedsys">%PACKNAME%=LoadPack()</font><p>becomes:</p>
+        <p><font face="Fixedsys">pack1=LoadPack()</font></p>
+        </td>
+    </tr>
+</table>
+
+<p align="left"><font face="Tahoma"></font>&nbsp;</p>
+
+<table border="1" cellpadding="4" cellspacing="0"
+bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td bgcolor="#808080"><strong>TAG</strong></td>
+        <td bgcolor="#C0C0C0">%PACKFILENAME%</td>
+    </tr>
+    <tr>
+        <td bgcolor="#808080"><strong>DESCRIPTION</strong></td>
+        <td bgcolor="#C0C0C0">The filename of the pack saved
+        during code generation. This replaces any occurances in
+        the template. The example on the right assumes the
+        filename is <strong>pack1.png</strong></td>
+    </tr>
+    <tr>
+        <td bgcolor="#808080"><strong>CODE EXAMPLE</strong></td>
+        <td bgcolor="#C0C0C0"><p><font face="Fixedsys">mypack=LoadPack(&quot;%PACKFILENAME%&quot;)</font></p>
+        <p>becomes:</p>
+        <p><font face="Fixedsys">mypack=LoadPack(&quot;pack1.png&quot;)</font></p>
+        </td>
+    </tr>
+</table>
+
+<p align="left"><font face="Tahoma"></font>&nbsp;</p>
+
+<table border="1" cellpadding="4" cellspacing="0"
+bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td bgcolor="#808080"><strong>TAG</strong></td>
+        <td bgcolor="#C0C0C0"><p>%ALL% and %IMAGENAME%</p>
+        </td>
+    </tr>
+    <tr>
+        <td bgcolor="#808080"><strong>DESCRIPTION</strong></td>
+        <td bgcolor="#C0C0C0">These tags are used to generate a
+        line of code for each image in the pack.<br>
+        When %ALL% is found in the template, the next line of
+        code below the tag is repeated for every image in the
+        pack.<p>The %IMAGENAME% tage is replaced by the name of
+        the current image from the pack.</p>
+        <p>The example on the right would be generated if the
+        pack contained these images:</p>
+        <p><strong>ball<br>
+        orange<br>
+        mouse</strong></p>
+        </td>
+    </tr>
+    <tr>
+        <td bgcolor="#808080"><strong>CODE EXAMPLE</strong></td>
+        <td bgcolor="#C0C0C0"><font face="Fixedsys">%ALL%<br>
+        PositonSprite %IMAGENAME%,Rand(100),Rand(100)</font><p>becomes
+        something like:</p>
+        <p><font face="Fixedsys">PositonSprite
+        ball,Rand(100),Rand(100)<br>
+        PositonSprite orange,Rand(100),Rand(100)<br>
+        PositonSprite mouse,Rand(100),Rand(100)</font></p>
+        </td>
+    </tr>
+</table>
+
+<hr>
+
+<p><a href="../index.htm">Main Page</a></p>
+</body>
+</html>

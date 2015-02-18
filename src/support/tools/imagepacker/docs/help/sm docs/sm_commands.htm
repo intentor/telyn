@@ -1,0 +1,2723 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>SpriteMaster - Commands (in detail)</title>
+</head>
+
+<body>
+
+<h1><font face="Tahoma">SpriteMaster Pro</font></h1>
+
+<p>&nbsp;</p>
+
+<h3><font face="Tahoma">Commands and Functions (in detail)</font></h3>
+
+<hr>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Command</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="SpriteGraphics"><font size="5"
+        face="Courier"><strong>SpriteGraphics</strong></font></a></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>width</strong></font></td>
+        <td><font face="Courier">width of display</font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>height</strong></font></td>
+        <td><font face="Courier">height of display</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>depth</strong></font></td>
+        <td><font face="Courier">Color depth (16,24,32)</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>viewmode</strong></font></td>
+        <td><font face="Courier">0=Windowed (debug) or fullscreen
+        (non-debug)<br>
+        1=Full Screen<br>
+        2=Windowed<br>
+        3=Windowed/scaled</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>pivotdistance</strong></font></td>
+        <td><font face="Courier">Distance at which to place
+        sprite pivot from camera.<br>
+        Default value is 1.0<br>
+        Increase if you get sprite flickering.</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Sets up the sprite
+        display and special sprite pivot.</font><p><font
+        face="Courier">This command needs to be called <em>BEFORE</em>
+        loading/creating sprites, loading packs, or displaying
+        sprites.</font></p>
+        <p><font face="Courier">Once this command is called you
+        can use the following two global variables to access the
+        sprite camera and sprite pivot used by SpriteMaster:</font></p>
+        <p><font color="#800040" face="Courier">spritecamera</font><font
+        face="Courier"> - points to the 3D camera<br>
+        </font><font color="#800040" face="Courier">spritepivot</font><font
+        face="Courier"> - points to a sprite pivot which all
+        created/loaded sprites are attached to by default</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">SpriteGraphics
+        640,480<br>
+        pack=LoadPack(&quot;bricks.png&quot;)<br>
+        brick1=GetPackedSprite(&quot;brick1&quot;,pack)<br>
+        PostionSprite brick1,200,100<br>
+        RenderWorld : Flip : WaitKey<br>
+        End</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#EndSpriteGraphics"><font
+        face="Courier"><strong>EndSpriteGraphics</strong></font></a><font
+        face="Courier"><strong><br>
+        </strong></font><a href="#CreateSpritePivot"><font
+        face="Courier"><strong>CreateSpritePivot()</strong></font></a></td>
+    </tr>
+</table>
+
+<p><font face="Tahoma">-</font></p>
+
+<p>&nbsp;</p>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Function</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="CreateSpritePivot"><font
+        size="5" face="Courier"><strong>CreateSpritePivot</strong></font></a><font
+        size="5" face="Courier"><strong>()</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>camera</strong></font></td>
+        <td><font face="Courier">handle to main display camera</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>pivotdistance</strong></font></td>
+        <td><font face="Courier">Distance at which to place
+        sprite pivot from the camera.<br>
+        Default value is 1.0 Increase if you get sprite
+        flickering.</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Sets up sprite pivot
+        for displaying the sprites.</font><p><font face="Courier">Normally,
+        this pivot is created by using the </font><a
+        href="#SpriteGraphics"><font face="Courier"><strong>SpriteGraphics</strong></font></a><font
+        face="Courier"> command. You can however use this
+        function to create additional pivots to attach sprites
+        to. Handy for hiding/showing a bunch of sprites
+        simultaneously.</font></p>
+        <p><font face="Courier">This function needs to be called <em>BEFORE</em>
+        loading/creating sprites, or loading packs.</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Graphics3D 640,480<br>
+        cam=CreateCamera()<br>
+        piv=CreateSpritePivot(cam)<br>
+        pack=LoadPack(&quot;bricks.png&quot;,0,piv)</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#SpriteGraphics"><font
+        face="Courier"><strong>SpriteGraphics</strong></font></a></td>
+    </tr>
+</table>
+
+<p><font face="Tahoma">-</font></p>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Command</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="EndSpriteGraphics"><font
+        size="5" face="Courier"><strong>EndSpriteGraphics</strong></font></a></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier"><strong>none</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Clears all entities,
+        surfaces, textures, and brushes in existance then closes
+        the graphics display. Also, does a complete cleanup of
+        any internal data used by SpriteMaster.</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">SpriteGraphics
+        640,480<br>
+        pack=LoadPack(&quot;bricks.png&quot;)<br>
+        brick1=GetPackedSprite(&quot;brick1&quot;,pack)<br>
+        PostionSprite brick1,200,100<br>
+        RenderWorld : Flip : WaitKey<br>
+        EndSpriteGraphics</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#SpriteGraphics"><font
+        face="Courier"><strong>SpriteGraphics</strong></font></a></td>
+    </tr>
+</table>
+
+<p>-</p>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Command</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="SpriteCameraZoom"><font size="5"
+        face="Courier"><strong>SpriteCameraZoom</strong></font></a></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>camera</strong></font></td>
+        <td><font face="Courier">camera to zoom</font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>zoomvalue#</strong></font></td>
+        <td><font face="Courier">amount of zoom</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Zooms both the
+        sprite camera and any sprite pivots simultaneously.<br>
+        See </font><a href="#SpriteGraphics"><font face="Courier"><strong>SpriteGraphics</strong></font></a><font
+        face="Courier"> for more details on the sprite camera and
+        </font><a href="#CreateSpritePivot"><font face="Courier"><strong>CreateSpritePivot()</strong></font></a><font
+        face="Courier"> for details regarding the sprite pivot.</font><p><font
+        face="Courier">NOTE: Only positive values can be used for
+        zooming.</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">SpriteGraphics
+        640,480<br>
+        SpriteCameraZoom spritecamera,2.4</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#SpriteGraphics"><font
+        face="Courier"><strong>SpriteGraphics</strong></font></a></td>
+    </tr>
+</table>
+
+<p>-</p>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Function</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="CreateSprite"><font size="5"
+        face="Courier"><strong>CreateSprite</strong></font></a><font
+        size="5" face="Courier"><strong>()</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>width</strong></font></td>
+        <td><font face="Courier">width of sprite (in pixels)</font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>height</strong></font></td>
+        <td><font face="Courier">height of sprite (in pixels)</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>columns</strong></font></td>
+        <td><font face="Courier">How many frames of animation in
+        a column (default=1)</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>rows</strong></font></td>
+        <td><font face="Courier">How many frames of animation in
+        a row (default=1)</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>flags</strong></font></td>
+        <td><font face="Courier">Flags for the sprites texture.
+        Default is 32+16+4+1<br>
+        See Blitz3D <strong>CreateTexture()</strong> for more
+        details</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>parent</strong></font></td>
+        <td><font face="Courier">parent to attach the sprite to.<br>
+        Defaults to spritepivot as created by </font><a
+        href="#SpriteGraphics"><font face="Courier"><strong>SpriteGraphics</strong></font></a><font
+        face="Courier"><strong> </strong>or<strong> </strong></font><a
+        href="#CreateSpritePivot"><font face="Courier"><strong>CreateSpritePivot()</strong></font></a></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Creates a sprite
+        with it's own mesh, texture, and surface inside a unique
+        pack.</font><p><font face="Courier">The sprites texture
+        size is set to the next 'power of 2' value. Some examples
+        here:</font></p>
+        <p><font face="Courier">sprite.smSprite=CreateSprite(28,60)
+        ; texture size will be 32x64<br>
+        sprite.smSprite=CreateSprite(120,160) ; texture size will
+        be 128x256</font></p>
+        <p><font face="Courier">To set up animation frames for
+        the sprite just supply values in the <em>column</em>s and
+        <em>rows</em> parameters. Then, use the <em>frame</em>
+        parameter in PositionSprite to show a particular frame in
+        the sprite. </font></p>
+        <p><font face="Courier"><strong><u>Example</u></strong><br>
+        create a sprite with a size of 28x30 which has 5 frames
+        across and 4 frames down:</font></p>
+        <blockquote>
+            <p><font face="Courier">sprite.smSprite=CreateSprite(28,30,5,4)<br>
+            PostionSprite sprite,40,70,7 ; show frame 7</font></p>
+        </blockquote>
+        <p><font face="Courier">The sprites default texture will
+        be empty. Use </font><a href="#SpriteTexture"><font
+        face="Courier"><strong>SpriteTexture</strong></font></a><font
+        face="Courier"> and <strong>GetSpriteTexture()</strong>
+        to change this.</font></p>
+        <p><font face="Courier">You can use </font><a
+        href="#GetPackedSprite"><font face="Courier"><strong>GetPackedSprite()</strong></font></a><font
+        face="Courier"> and </font><a href="#CopySprite"><font
+        face="Courier"><strong>CopySprite()</strong></font></a><font
+        face="Courier"> with created sprites. Doing so makes the
+        newly created sprite share the mesh in which the
+        referenced sprite is using.</font></p>
+        <p><font face="Courier">If you wish to find the new pack
+        associated with the sprite then use the </font><a
+        href="#GetPack"><font face="Courier"><strong>GetPack()</strong></font></a><font
+        face="Courier"> function.</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">SpriteGraphics
+        640,480<br>
+        sprite.smSprite=CreateSprite(32,16)<br>
+        PostionSprite sprite,100,50<br>
+        RenderWorld : Flip : WaitKey<br>
+        End</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#PositonSprite"><font
+        face="Courier"><strong>PositionSprite</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#FreeSprite"><font face="Courier"><strong>FreeSprite</strong></font></a><font
+        face="Courier"><strong><br>
+        </strong></font><a href="#GetPackedSprite"><font
+        face="Courier"><strong>GetPackedSprite()</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#CopySprite"><font face="Courier"><strong>CopySprite()</strong></font></a><font
+        face="Courier"><strong><br>
+        </strong></font><a href="#SpriteTexture"><font
+        face="Courier"><strong>SpriteTexture</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#GetSpriteTexture"><font face="Courier"><strong>GetSpriteTexture()</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#GetSpriteMesh"><font face="Courier"><strong>GetSpriteMesh()</strong></font></a><font
+        face="Courier"><strong><br>
+        </strong></font><a href="#GetPack"><font face="Courier"><strong>GetPack()</strong></font></a></td>
+    </tr>
+</table>
+
+<p>-</p>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Function</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="LoadSprite"><font size="5"
+        face="Courier"><strong>LoadSprite</strong></font></a><font
+        size="5" face="Courier"><strong>()</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>filename$</strong></font></td>
+        <td><font face="Courier">name of pack image to load</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>flags</strong></font></td>
+        <td><font face="Courier">texture flags. Default is
+        32+16+4+1<br>
+        See Blitz3D <strong>LoadTexture()</strong> for more
+        details</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>parent</strong></font></td>
+        <td><font face="Courier">parent to attach all extracted
+        sprites (from the pack) to.<br>
+        Defaults to spritepivot as created by </font><a
+        href="#SpriteGraphics"><font face="Courier"><strong>SpriteGraphics</strong></font></a><font
+        face="Courier"><strong> </strong>or<strong> </strong></font><a
+        href="#CreateSpritePivot"><font face="Courier"><strong>CreateSpritePivot()</strong></font></a></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Loads an image file
+        and creates a new sprite.<br>
+        The new sprite will have it's own mesh, texture, and
+        surface inside a unique pack.</font><p><font
+        face="Courier">You should load images which have sizes
+        using a 'power of 2' where possible. Otherwise the
+        sprites image will appear blurred due to internal scaling
+        of the texture.<br>
+        Example width/height sizes are:</font></p>
+        <blockquote>
+            <p><font color="#808080" face="Courier"><strong>8 ,
+            16 , 32 , 64 , 128 , 256 , 512 , 1024 , etc...</strong></font></p>
+        </blockquote>
+        <p><font face="Courier">You can use </font><a
+        href="#GetPackedSprite"><font face="Courier"><strong>GetPackedSprite()</strong></font></a><font
+        face="Courier"> and </font><a href="#CopySprite"><font
+        face="Courier"><strong>CopySprite()</strong></font></a><font
+        face="Courier"> with created sprites. Doing so makes the
+        copied sprite share the pack/surface/mesh in which the
+        referenced sprite is using.</font></p>
+        <p><font face="Courier">If you wish to find the new pack
+        associated with the sprite then use the </font><a
+        href="#GetPack"><font face="Courier"><strong>GetPack()</strong></font></a><font
+        face="Courier"> function.</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">SpriteGraphics
+        640,480<br>
+        ball.smSprite=LoadSprite(&quot;ball.png&quot;)<br>
+        PositionSprite ball,100,100</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#PositonSprite"><font
+        face="Courier"><strong>PositionSprite</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#FreeSprite"><font face="Courier"><strong>FreeSprite</strong></font></a><font
+        face="Courier"><strong><br>
+        </strong></font><a href="#GetPackedSprite"><font
+        face="Courier"><strong>GetPackedSprite()</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#CopySprite"><font face="Courier"><strong>CopySprite()</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#GetPack"><font face="Courier"><strong>GetPack()</strong></font></a></td>
+    </tr>
+</table>
+
+<p>-</p>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Function</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="CreateTextSprite"><font size="5"
+        face="Courier"><strong>CreateTextSprite</strong></font></a><font
+        size="5" face="Courier"><strong>()</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>filename$</strong></font></td>
+        <td><font face="Courier">name of font in pack</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>flags</strong></font></td>
+        <td><font face="Courier">Flags for the sprites texture.
+        Default is 32+16+4+1<br>
+        See Blitz3D <strong>CreateTexture()</strong> for more
+        details</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>charoffset</strong></font></td>
+        <td><font face="Courier">parent to attach the sprite to.<br>
+        Defaults to spritepivot as created by </font><a
+        href="#SpriteGraphics"><font face="Courier"><strong>SpriteGraphics</strong></font></a><font
+        face="Courier"> and </font><a href="#CreateSpritePivot"><font
+        face="Courier"><strong>CreateSpritePivot()</strong></font></a></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Creates a special
+        text sprite with it's own mesh, texture, and surface
+        inside a pack.</font><p><font face="Courier">Text sprites
+        are created by extracting an exsiting font image from
+        within the specified pack. This font image needs to be
+        set up using a particular sequence of characters.</font></p>
+        <p><font face="Courier">Example:</font></p>
+        <div align="center"><center><table border="1"
+        cellpadding="4" cellspacing="0" bgcolor="#000000"
+        bordercolor="#000000" bordercolordark="#C0C0C0"
+        bordercolorlight="#C0C0C0">
+            <tr>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>!</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>&quot;</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>#</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>$</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>%</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>&amp;</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>(</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>)</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>*</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>+</strong></font></td>
+            </tr>
+            <tr>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>,</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>-</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>.</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>/</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>0</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>1</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>2</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>3</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>4</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>5</strong></font></td>
+            </tr>
+            <tr>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>6</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>7</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>8</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>9</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>:</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>;</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>&lt;</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>=</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>&gt;</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>?</strong></font></td>
+            </tr>
+            <tr>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>@</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>A</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>B</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>C</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>D</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>E</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>F</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>G</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>H</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>I</strong></font></td>
+            </tr>
+            <tr>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>J</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>K</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>L</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>M</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>N</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>O</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>P</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>Q</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>R</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>S</strong></font></td>
+            </tr>
+            <tr>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>T</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>U</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>V</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>W</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>X</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>Y</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>Z</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>[</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>\</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>]</strong></font></td>
+            </tr>
+            <tr>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>^</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>_</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>`</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>a</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>b</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>c</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>d</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>e</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>f</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>g</strong></font></td>
+            </tr>
+            <tr>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>h</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>i</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>j</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>k</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>l</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>m</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>n</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>o</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>p</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>q</strong></font></td>
+            </tr>
+            <tr>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>r</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>s</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>t</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>u</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>v</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>w</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>x</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>y</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>z</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>{</strong></font></td>
+            </tr>
+            <tr>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>|</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>}</strong></font></td>
+                <td><font color="#FF8040" size="7" face="Courier"><strong>~</strong></font></td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+        </center></div><p><font face="Courier">The frame layout
+        can be anything but the characters should use this string
+        sequence (same as above):</font></p>
+        <div align="center"><center><table border="1"
+        cellpadding="6" cellspacing="0" bgcolor="#FFFFFF"
+        bordercolor="#000000">
+            <tr>
+                <td><font size="7" face="Courier">!&quot;#$%&amp;()*+,-./0123456789<br>
+                :;&lt;=&gt;?</font><font size="3" face="Courier">@ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+                [/]^_`</font><font size="4" face="Courier">abcedfghijklmnopqrstuvwxyz{|}~</font></td>
+            </tr>
+        </table>
+        </center></div><p><font face="Courier">Normally, using </font><a
+        href="#AddText"><font face="Courier"><strong>AddText</strong></font></a><font
+        face="Courier">, the first character in the font layout
+        is a <strong>!</strong> (exclamation mark). You can
+        however use an <em>charoffest</em> parameter to tell
+        SpriteMaster whereabouts the exclamation mark is. For
+        example, your font layout might start with a SPACE
+        followed by the exclamation mark. In which case you use
+        an <em>offset</em> of 1:</font></p>
+        <blockquote>
+            <p><font face="Courier">mytext.smSprite=CreateTextSprite(&quot;textpack.png&quot;,1)</font></p>
+        </blockquote>
+        <p><font face="Courier">Use the animation settings in
+        Image Packer to set up the appropriate frames for the
+        font.</font></p>
+        <p><font face="Courier">To add text/characters use </font><a
+        href="#AddText"><font face="Courier"><strong>AddText</strong></font></a><font
+        face="Courier"><br>
+        To remove all text/characters use <strong>ClearText</strong></font></p>
+        <p><font face="Courier">If you wish to find the new pack
+        associated with the text sprite then use the </font><a
+        href="#GetPack"><font face="Courier"><strong>GetPack()</strong></font></a><font
+        face="Courier"> function.</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">SpriteGraphics
+        640,480<br>
+        txt.smSprite=LoadFontSet(&quot;myfont.png&quot;)<br>
+        PostionSprite txt,100,50<br>
+        RenderWorld : Flip : WaitKey<br>
+        End</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#AddText"><font face="Courier"><strong>AddText</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#ClearText"><font face="Courier"><strong>ClearText</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#GetPack"><font face="Courier"><strong>GetPack()</strong></font></a></td>
+    </tr>
+</table>
+
+<p>-</p>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Command</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="AddText"><font size="5"
+        face="Courier"><strong>AddText</strong></font></a></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>sprite</strong></font></td>
+        <td><font face="Courier">pointer to .smSprite instance</font></td>
+    </tr>
+    <tr>
+        <td><font color="#000000" face="Courier"><strong>x</strong></font></td>
+        <td><font face="Courier">x pos to display first character</font></td>
+    </tr>
+    <tr>
+        <td><font color="#000000" face="Courier"><strong>y</strong></font></td>
+        <td><font face="Courier">y pos to display first character</font></td>
+    </tr>
+    <tr>
+        <td><font color="#000000" face="Courier"><strong>textstring$</strong></font></td>
+        <td><font face="Courier">string of characters to add</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>red</strong></font></td>
+        <td><font face="Courier">red component of text being
+        added</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>green</strong></font></td>
+        <td><font face="Courier">green component of text being
+        added</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>blue</strong></font></td>
+        <td><font face="Courier">blue component of text being
+        added</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>alpha</strong></font></td>
+        <td><font face="Courier">alpha of text being added</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Adds a string of
+        characters to an existing text sprite.<br>
+        The x/y parameters specify the position to display the
+        text.<br>
+        You may supply optional color/alpha values to change the
+        characters appearance.</font><p><font face="Courier">A
+        text sprite is a special kind of quad sprite set up to
+        display a string of font characters. See the </font><a
+        href="#CreateTextSprite"><font face="Courier"><strong>CreateTextSprite()</strong></font></a><font
+        face="Courier"> function for details on how to set up a
+        text sprite.</font></p>
+        <p><font face="Courier">The <em>textstring$</em>
+        parameter can contain any valid character values.<br>
+        There are a couple of control characters which can be
+        passed to the </font><a href="#AddText"><font
+        face="Courier"><strong>AddText</strong></font></a><font
+        face="Courier"> command:</font></p>
+        <table border="1" cellpadding="4" cellspacing="0"
+        bgcolor="#FFFFFF" bordercolor="#000000">
+            <tr>
+                <td bgcolor="#808080"><font face="Courier"><strong>Chr$()</strong></font></td>
+                <td bgcolor="#808080"><font face="Courier"><strong>Action</strong></font></td>
+            </tr>
+            <tr>
+                <td><font face="Courier">10</font></td>
+                <td><font face="Courier">Start a new line</font></td>
+            </tr>
+            <tr>
+                <td><font face="Courier">13</font></td>
+                <td><font face="Courier">Start a new line</font></td>
+            </tr>
+        </table>
+        <p><font face="Courier">So, AddText
+        txt,3,8,&quot;Hello&quot;+Chr$(10)+&quot;World&quot;
+        produces:</font></p>
+        <div align="center"><center><table border="0"
+        bgcolor="#000000">
+            <tr>
+                <td><font color="#FF8040" size="5" face="Courier"><strong>Hello<br>
+                World</strong></font></td>
+            </tr>
+        </table>
+        </center></div><p><font color="#FF0000" face="Courier">NOTE2:
+        There are a quite a few commands/functions which do not
+        work with text sprites. Here is a list:</font></p>
+        <p><a href="#RotateSprite"><font color="#000000"
+        face="Courier"><strong>RotateSprite</strong></font></a><font
+        color="#000000" face="Courier"><strong> , </strong></font><a
+        href="#ResizeSprite"><font color="#000000" face="Courier"><strong>ResizeSprite</strong></font></a><font
+        color="#000000" face="Courier"><strong>, </strong></font><a
+        href="#FlipSprite"><font color="#000000" face="Courier"><strong>FlipSprite</strong></font></a><font
+        color="#000000" face="Courier"><strong> , </strong></font><a
+        href="#SetSprite"><font color="#000000" face="Courier"><strong>SetSprite</strong></font></a><font
+        color="#000000" face="Courier"><strong> , <br>
+        </strong></font><a href="#SpritesOverlap"><font
+        color="#000000" face="Courier"><strong>SpritesOverlap()</strong></font></a><font
+        color="#000000" face="Courier"><strong> , </strong></font><a
+        href="#CopySprite"><font color="#000000" face="Courier"><strong>CopySprite()</strong></font></a></p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">SpriteGraphics
+        640,480<br>
+        txt.smSprite=CreateTextSprite(&quot;myfont.png&quot;)<br>
+        AddText txt,20,40,&quot;Hello World&quot;</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#CreateTextSprite"><font
+        face="Courier"><strong>CreateTextSprite()</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#ClearText"><font face="Courier"><strong>ClearText</strong></font></a></td>
+    </tr>
+</table>
+
+<p>-</p>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Command</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="ClearText"><font size="5"
+        face="Courier"><strong>ClearText</strong></font></a></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>sprite</strong></font></td>
+        <td><font face="Courier">pointer to .smSprite instance</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Clears all
+        characters/text displayed in a text sprite.<br>
+        Refer to </font><a href="#CreateTextSprite"><font
+        face="Courier"><strong>CreateTextSprite()</strong></font></a><font
+        face="Courier"> and </font><a href="#AddText"><font
+        face="Courier"><strong>AddText</strong></font></a><font
+        face="Courier"><strong> </strong>for details about text
+        sprites.</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">SpriteGraphics
+        640,480<br>
+        txt=CreateTextSprite(&quot;fontpack.png&quot;)<br>
+        AddText txt,10,10,&quot;Hello&quot;<br>
+        ClearText txt</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#CreateTextSprite"><font
+        face="Courier"><strong>CreateTextSprite()</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#AddText"><font face="Courier"><strong>AddText</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#ClearText"><font face="Courier"><strong>ClearText</strong></font></a></td>
+    </tr>
+</table>
+
+<p>-</p>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Command</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="FreeSprite"><font size="5"
+        face="Courier"><strong>FreeSprite</strong></font></a></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>sprite</strong></font></td>
+        <td><font face="Courier">pointer to .smSprite instance</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Frees an existing
+        sprite which has been created, loaded, copied, or
+        extracted (from a pack).</font><p><font face="Courier">You
+        can see how many sprites are associated with a pack with
+        the </font><a href="#CountSpritesUsingPack"><font
+        face="Courier"><strong>CountSpritesUsingPack()</strong></font></a><font
+        face="Courier"> function.</font></p>
+        <p><font face="Courier">If you have several hundred
+        sprites in a surface you may wish to use this command
+        outside of a loop.</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">SpriteGraphics
+        640,480<br>
+        ball.smSprite=LoadSprite(&quot;ball.png&quot;)<br>
+        FreeSprite ball</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#CreateSprite"><font
+        face="Courier"><strong>CreateSprite</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#LoadSprite"><font face="Courier"><strong>LoadSprite()</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#CopySprite"><font face="Courier"><strong>CopySprite()</strong></font></a><font
+        face="Courier"><strong><br>
+        </strong></font><a href="#CreateTextSprite"><font
+        face="Courier"><strong>CreateTextSprite()</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#GetPackedSprite"><font face="Courier"><strong>GetPackedSprite</strong></font></a><font
+        face="Courier"><strong><br>
+        </strong></font><a href="#FreePack"><font face="Courier"><strong>FreePack</strong></font></a></td>
+    </tr>
+</table>
+
+<p>-</p>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Function</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="LoadPack"><font size="5"
+        face="Courier"><strong>LoadPack</strong></font></a><font
+        size="5" face="Courier"><strong>()</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>filename$</strong></font></td>
+        <td><font face="Courier">name of pack to load</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>flags</strong></font></td>
+        <td><font face="Courier">texture flags. Default is
+        32+16+4+1<br>
+        See Blitz3D <strong>LoadTexture()</strong> for more
+        details</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Loads a pack and
+        returns an index number pointing to the pack.</font><p><font
+        face="Courier">The pack needs an associated *.def file to
+        work correctly. See the <strong>Image Packer</strong>
+        tool.</font></p>
+        <p><font face="Courier">Once the pack is loaded you can
+        extract as many sprites/images/textures as required using
+        these functions:</font></p>
+        <p><a href="#GetPackedSprite"><font face="Courier"><strong>GetPackedSprite()</strong></font></a><font
+        face="Courier"><strong><br>
+        </strong></font><a href="#GetPackedImage"><font
+        face="Courier"><strong>GetPackedImage()</strong></font></a><font
+        face="Courier"><strong><br>
+        </strong></font><a href="#GetPackedTexture"><font
+        face="Courier"><strong>GetPackedTexture()</strong></font></a></p>
+        <p><font face="Courier">To free the pack (and associated
+        sprites) use </font><a href="#FreePack"><font
+        face="Courier"><strong>FreePack</strong></font></a><font
+        face="Courier">.</font></p>
+        <p><font face="Courier">You can use </font><a
+        href="#CountPackedImages"><font face="Courier"><strong>CountPackedImages()</strong></font></a><font
+        face="Courier"> to return the number of individual
+        sprites/images in the pack. Alternatively, </font><a
+        href="#CountSpritesUsingPack"><font face="Courier"><strong>CountSpritesUsingPack()</strong></font></a><font
+        face="Courier"> can be used to return the number of
+        sprites using the pack.</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">SpriteGraphics
+        640,480<br>
+        pack=LoadPack(&quot;bricks.png&quot;)<br>
+        brick1.smSprite=GetPackedSprite(&quot;brick1&quot;,pack)</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#GetPackedSprite"><font
+        face="Courier"><strong>GetPackedSprite()</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#GetPackedImage"><font face="Courier"><strong>GetPackedImage()</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#GetPackedTexture"><font face="Courier"><strong>GetPackedTexture()</strong></font></a><font
+        face="Courier"><strong><br>
+        </strong></font><a href="#FreePack"><font face="Courier"><strong>FreePack</strong></font></a><font
+        face="Courier"><strong><br>
+        </strong></font><a href="#CountSpritesUsingPack"><font
+        face="Courier"><strong>CountSpritesUsingPack()</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#CountPackedImages"><font face="Courier"><strong>CountPackedImages()</strong></font></a></td>
+    </tr>
+</table>
+
+<p>-</p>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Command</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="FreePack"><font size="5"
+        face="Courier"><strong>FreePack</strong></font></a></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>pack</strong></font></td>
+        <td><font face="Courier">pack index to free</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Frees up an existing
+        pack and any extracted/copied sprites belonging to the
+        pack.</font><p><font face="Courier">Sprites created or
+        loaded with </font><a href="#CreateSprite"><font
+        face="Courier"><strong>CreateSprite()</strong></font></a><font
+        face="Courier"> / </font><a href="#LoadSprite"><font
+        face="Courier"><strong>LoadSprite()</strong></font></a><font
+        face="Courier"> have their own pack. If you use </font><a
+        href="#CopySprite"><font face="Courier"><strong>CopySprite()</strong></font></a><font
+        face="Courier"> on these sprites then the copies will
+        share the pack/surface. By using </font><a
+        href="#GetPack"><font face="Courier"><strong>GetPack()</strong></font></a><font
+        face="Courier"> to retrieve the pack you can then free up
+        the original sprite as well as the copies by using via
+        the </font><a href="#FreePack"><font face="Courier"><strong>FreePack</strong></font></a><font
+        face="Courier"> command.</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">SpriteGraphics
+        640,480<br>
+        pack=LoadPack(&quot;bricks.png&quot;)<br>
+        brick1.smSprite=GetPackedSprite(&quot;brick1&quot;,pack)<br>
+        FreePack pack</font><p><font face="Courier">coin=LoadSprite(&quot;coin.png&quot;)<br>
+        Dim c(5)<br>
+        For n=1 to 5<br>
+        c(n)=CopySprite(coin)<br>
+        Next<br>
+        coinpack=GetPack(coin)<br>
+        FreePack coinpack ; free pack and coin/copies of coin</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#LoadPack"><font face="Courier"><strong>LoadPack()</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#GetPackedSprite"><font face="Courier"><strong>GetPackedSprite()</strong></font></a><font
+        face="Courier"><strong><br>
+        </strong></font><a href="#CopySprite"><font
+        face="Courier"><strong>CopySprite()</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#FlipSprite"><font face="Courier"><strong>FreeSprite</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#GetPack"><font face="Courier"><strong>GetPack()</strong></font></a></td>
+    </tr>
+</table>
+
+<p>-</p>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Function</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="GetPack"><font size="5"
+        face="Courier"><strong>GetPack</strong></font></a><font
+        size="5" face="Courier"><strong>()</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>sprite</strong></font></td>
+        <td><font face="Courier">pointer to .smSprite instance</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Returns the sprites
+        associated pack. This is particularly handy for the </font><a
+        href="#CreateSprite"><font face="Courier"><strong>CreateSprite()</strong></font></a><font
+        face="Courier"> and </font><a href="#LoadSprite"><font
+        face="Courier"><strong>LoadSprite()</strong></font></a><font
+        face="Courier"> functions.<br>
+        Having the pack details means you can use </font><a
+        href="#FreePack"><font face="Courier"><strong>FreePack</strong></font></a><font
+        face="Courier"> to free up not only the pack, but also
+        all sprites using the pack.<br>
+        Handy for clearing up muliple copies etc ..</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">coin=LoadSprite(&quot;coin.png&quot;)<br>
+        Dim c(5)<br>
+        For n=1 to 5<br>
+        c(n)=CopySprite(coin)<br>
+        Next<br>
+        coinpack=GetPack(coin)<br>
+        FreePack coinpack ; free pack and coin/copies of coin</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#LoadSprite"><font
+        face="Courier"><strong>LoadSprite()</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#CreateSprite"><font face="Courier"><strong>CreateSprite()</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#FreePack"><font face="Courier"><strong>FreePack</strong></font></a></td>
+    </tr>
+</table>
+
+<p>-</p>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Function</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="GetPackedSprite"><font size="5"
+        face="Courier"><strong>GetPackedSprite</strong></font></a><font
+        size="5" face="Courier"><strong>()</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>ref$</strong></font></td>
+        <td><font face="Courier">name or index number of sprite
+        in pack</font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>pack</strong></font></td>
+        <td><font face="Courier">which pack to extract sprite
+        from</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>rX</strong></font></td>
+        <td><font face="Courier">region - x offset</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>rY</strong></font></td>
+        <td><font face="Courier">region - y offset</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>rW</strong></font></td>
+        <td><font face="Courier">region - width</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>rH</strong></font></td>
+        <td><font face="Courier">region - height</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Gets / extracts a
+        sprite from a pack.<br>
+        Using this function creates a new sprite by adding 4
+        vertices to a surface belonging to the pack. The sprite
+        to get is determined by the <strong>ref$</strong> value
+        which can be used in 2 ways:</font><p><font
+        face="Courier"><u>1) Sprites index number:</u><br>
+        sprite.smSprite=GetPackedSprite(4,pack)<br>
+        Gets the <strong>4th</strong> sprite in the pack.<br>
+        This is useful if you wish to extract all sprites into an
+        array.<br>
+        One thing to bear in mind is though, if you use <strong>Image
+        Packer</strong> to modify the pack then the images in the
+        pack are likely to be jumbled. This will cause the index
+        numbers to refer to different images.<br>
+        You can use </font><a href="#SpriteName"><font
+        face="Courier"><strong>SpriteName$()</strong></font></a><font
+        face="Courier"> to find the name of the sprite if using
+        the index method.</font></p>
+        <p><font face="Courier"><u>2) Sprites name:</u><br>
+        sprite.smSprite=GetPackedSprite(&quot;car&quot;,pack)<br>
+        Gets the sprite called <strong>car</strong> from the
+        pack. This name is set within Image Packer. The name is
+        always lowercase and without spaces.</font></p>
+        <p><font face="Courier">You can free up individually
+        extracted sprites by using </font><a href="#FreeSprite"><font
+        face="Courier"><strong>FreeSprite</strong></font></a><font
+        face="Courier"><strong>.</strong> Alternatively, use </font><a
+        href="#FreePack"><font face="Courier"><strong>FreePack</strong></font></a><font
+        face="Courier"> to clear ALL sprites associated with a
+        pack (as well as the pack itself).</font></p>
+        <p><font face="Courier">The optional <em>rX,rY,rW,rH</em>
+        parameters are used to grab a region of the sprite image
+        instead.<br>
+        The <em>rX</em> and <em>rY</em> values are offsets from
+        the top/left of the sprite image. <em>rW</em> and <em>rH</em>
+        determine the width and height of the region.</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">SpriteGraphics
+        640,480<br>
+        pack=LoadPack(&quot;bricks.png&quot;)<br>
+        sprite3.smSprite=GetPackedSprite(3,pack)<br>
+        boxsprite.smSprite=GetPackedSprite(&quot;box&quot;,pack)<br>
+        clip.smSprite=GetPackedSprite(&quot;box&quot;,pack,8,4,10,10)</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#FreeSprite"><font
+        face="Courier"><strong>FreeSprite</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#FreePack"><font face="Courier"><strong>FreePack</strong></font></a><font
+        face="Courier"><strong><br>
+        </strong></font><a href="#CountSpritesUsingPack"><font
+        face="Courier"><strong>CountSpritesUsingPack()</strong></font></a><font
+        face="Courier"><strong><br>
+        </strong></font><a href="#SpriteName"><font
+        face="Courier"><strong>SpriteName$()</strong></font></a><font
+        face="Courier"><strong><br>
+        </strong></font><a href="#GetPackedImage"><font
+        face="Courier"><strong>GetPackedImage()</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#GetPackedTexture"><font face="Courier"><strong>GetPackedTexture()</strong></font></a></td>
+    </tr>
+</table>
+
+<p>-</p>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Function</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="GetPackedImage"><font size="5"
+        face="Courier"><strong>GetPackedImage</strong></font></a><font
+        size="5" face="Courier"><strong>()</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>ref$</strong></font></td>
+        <td><font face="Courier">name or index number of image in
+        pack</font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>pack</strong></font></td>
+        <td><font face="Courier">which pack to extract image from</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Gets / extracts a 2D
+        image from a existing pack and returns the handle to the
+        image.<br>
+        The <strong>def$</strong> value which can be used in 2
+        ways:</font><p><font face="Courier"><u>1) Images by index
+        number:</u><br>
+        myimage=GetPackedImage(4,pack)<br>
+        Gets the <strong>4th</strong> image in the pack.<br>
+        This is useful if you wish to extract all images into an
+        array.<br>
+        One thing to bear in mind though, if you use <strong>Image
+        Packer</strong> to modify the pack then the images in the
+        pack are likely to be jumbled. This will cause the index
+        numbers to refer to different images.</font></p>
+        <p><font face="Courier"><u>2) Images name:</u><br>
+        image=GetPackedImage(&quot;car&quot;,pack)<br>
+        Gets the image called <strong>car</strong> from the pack.
+        This name is set within <strong>Image Packer</strong>.
+        The name is always lowercase and without spaces.</font></p>
+        <p><font face="Courier">Once you have your extracted the
+        image the sprite pack can be freed up with </font><a
+        href="#FreePack"><font face="Courier"><strong>FreePack</strong></font></a><font
+        face="Courier">.</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">SpriteGraphics
+        640,480<br>
+        pack=LoadPack(&quot;toys.png&quot;)<br>
+        image=GetPackedImage(&quot;spinningtop&quot;,pack)<br>
+        DrawImage image,60,70</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#GetPackedSprite"><font
+        face="Courier"><strong>GetPackedSprite()</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#GetPackedTexture"><font face="Courier"><strong>GetPackedTexture()</strong></font></a><font
+        face="Courier"><strong><br>
+        </strong></font><a href="#FreePack"><font face="Courier"><strong>FreePack</strong></font></a></td>
+    </tr>
+</table>
+
+<p>-</p>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Function</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="GetPackedTexture"><font size="5"
+        face="Courier"><strong>GetPackedTexture</strong></font></a><font
+        size="5" face="Courier"><strong>()</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>ref$</strong></font></td>
+        <td><font face="Courier">name or index number of texture
+        in pack</font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>pack</strong></font></td>
+        <td><font face="Courier">which pack to extract image from</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Creates a new
+        texture by copying a packed image/sprites from an
+        existing pack. The handle of the new texture is then
+        returned.</font><p><font face="Courier">The <strong>def$</strong>
+        value which can be used in 2 ways:</font></p>
+        <p><font face="Courier"><u>1) Textures by index number:</u><br>
+        mytexture=GetPackedTexture(4,pack)<br>
+        Gets the <strong>4th</strong> texture in the pack.<br>
+        This is useful if you wish to extract all textures into
+        an array.<br>
+        One thing to bear in mind though, if you use <strong>Image
+        Packer</strong> to modify the pack then the textures in
+        the pack are likely to be jumbled. This will cause the
+        index numbers to refer to different textures.</font></p>
+        <p><font face="Courier"><u>2) Textures name:</u><br>
+        mytexture=GetPackedTexture(&quot;brick&quot;,pack)<br>
+        Gets the texture called <strong>brick</strong> from the
+        pack. This name is set within <strong>Image Packer</strong>.
+        The name is always lowercase and without spaces.</font></p>
+        <p><font face="Courier">Once you have your extracted the
+        texture the pack can be freed up with </font><a
+        href="#FreePack"><font face="Courier"><strong>FreePack</strong></font></a><font
+        face="Courier">.</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">SpriteGraphics
+        640,480<br>
+        pack=LoadPack(&quot;toys.png&quot;)<br>
+        image=GetPackedImage(&quot;spinningtop&quot;,pack)<br>
+        DrawImage image,60,70</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#GetPackedSprite"><font
+        face="Courier"><strong>GetPackedSprite()</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#GetPackedImage"><font face="Courier"><strong>GetPackedImage()</strong></font></a><font
+        face="Courier"><strong><br>
+        </strong></font><a href="#FreePack"><font face="Courier"><strong>FreePack</strong></font></a></td>
+    </tr>
+</table>
+
+<p>-</p>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Function</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="CountSpritesUsingPack"><font
+        size="5" face="Courier"><strong>CountSpritesUsingPack</strong></font></a><font
+        size="5" face="Courier"><strong>()</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>pack</strong></font></td>
+        <td><font face="Courier">which pack to check</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Returns the number
+        of sprites which are using a pack</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">SpriteGraphics
+        640,480<br>
+        pack=LoadPack(&quot;bricks.png&quot;)<br>
+        numimages=CountPackedImages(pack)</font><p><font
+        face="Courier">Dim s(100)<br>
+        num=Rand(100)<br>
+        For n=1 to num<br>
+        s(n)=GetPackedSprite(Rand(1,numimages),pack)<br>
+        Next</font></p>
+        <p><font face="Courier">numsprites=CountSpritesUsingPack(pack)</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#LoadPack"><font face="Courier"><strong>LoadPack()</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#GetPackedSprite"><font face="Courier"><strong>GetPackedSprite()</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#CopySprite"><font face="Courier"><strong>CopySprite()</strong></font></a></td>
+    </tr>
+</table>
+
+<p>-</p>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Function</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="CountPackedImages"><font
+        size="5" face="Courier"><strong>CountPackedImages</strong></font></a><font
+        size="5" face="Courier"><strong>()</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>pack</strong></font></td>
+        <td><font face="Courier">pack to count images from</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Returns the number
+        of sprites/images in a pack.</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">SpriteGraphics
+        640,480<br>
+        pack=LoadPack(&quot;bricks.png&quot;)<br>
+        num=CountPackedImages(pack)</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#LoadPack"><font face="Courier"><strong>LoadPack()</strong></font></a></td>
+    </tr>
+</table>
+
+<p>-</p>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Function</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="PackedImageName"><font size="5"
+        face="Courier"><strong>PackedImageName$</strong></font></a><font
+        size="5" face="Courier"><strong>()</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>index</strong></font></td>
+        <td><font face="Courier">index number of image in pack</font></td>
+    </tr>
+    <tr>
+        <td><font color="#000000" face="Courier"><strong>pack</strong></font></td>
+        <td><font face="Courier">which pack</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">This function
+        returns the name of an image in a pack.<br>
+        The image is accessed via an index number.<br>
+        The first image in a pack is index number 1.<br>
+        The last image can be found by using </font><a
+        href="#CountPackedImages"><font face="Courier"><strong>CountPackedImages()</strong></font></a><font
+        face="Courier"> which returns the total number of images
+        in a pack.</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">SpriteGraphics
+        640,480<br>
+        pack=LoadPack(&quot;bricks.png&quot;)<br>
+        num=CountPackedImages(pack)</font><p><font face="Courier">For
+        i=1 to num<br>
+        DebugLog PackedImageName$(i,pack)<br>
+        Next</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#LoadPack"><font face="Courier"><strong>LoadPack()</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#CountPackedImages"><font face="Courier"><strong>CountPackedImages()</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#PackedImageFrames"><font face="Courier"><strong>PackedImageFrames()</strong></font></a></td>
+    </tr>
+</table>
+
+<p>-</p>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Function</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="PackedImageFrames"><font
+        size="5" face="Courier"><strong>PackedImageFrames</strong></font></a><font
+        size="5" face="Courier"><strong>()</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>ref$</strong></font></td>
+        <td><font face="Courier">name or index number of sprite
+        in pack</font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>pack</strong></font></td>
+        <td><font face="Courier">which pack to extract sprite
+        from</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Returns the number
+        of animation frames in a packed image/sprite from the
+        specified pack.</font><p><font face="Courier">If the
+        image has no animation then a value of 1 is returned.</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">SpriteGraphics
+        640,480<br>
+        pack=LoadPack(&quot;spaceships.png&quot;)<br>
+        DebugLog PackedImageFrames(&quot;ship1&quot;,pack)</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#PackedImageName"><font
+        face="Courier"><strong>PackedImageName$()</strong></font></a></td>
+    </tr>
+</table>
+
+<p>-</p>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Command</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="PositonSprite"><font size="5"
+        face="Courier"><strong>PositionSprite</strong></font></a></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>sprite</strong></font></td>
+        <td><font face="Courier">pointer to .smSprite instance</font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>x#</strong></font></td>
+        <td><font face="Courier">x position (in pixels) on screen</font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>y#</strong></font></td>
+        <td><font face="Courier">y position (in pixels) on screen</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>frame</strong></font></td>
+        <td><font face="Courier">optional frame number for
+        animated sprites.</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Positions the sprite
+        on screen at x,y pixel coordinates.<br>
+        By default, the sprites top/left corner is used as an
+        anchor point. Use </font><a href="#HandleSprite"><font
+        face="Courier"><strong>HandleSprite</strong></font></a><font
+        face="Courier"> to change this.</font><p><font
+        face="Courier">If the optional <em>frames</em> parameter
+        is used, the frame of the (animated) sprite is changed to
+        the number supplied.</font></p>
+        <p><font color="#0080FF" face="Courier">TIP: Unlike 2D
+        images you <em>do not</em> need to call this every loop.
+        Only when you wish to re-position the sprite.</font></p>
+        <p><font face="Courier">Note: The 'frame' value supplied
+        to </font><a href="#PositonSprite"><font face="Courier"><strong>PositionSprite</strong></font></a><font
+        face="Courier"> automatically wraps around in both
+        directions if the value is out of bounds. This helps to
+        avoid incorrect animation frames being shown.</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">SpriteGraphics
+        640,480<br>
+        pack=LoadPack(&quot;bricks.png&quot;)<br>
+        character.smSprite=GetPackedSprite(&quot;runner&quot;,pack)<br>
+        PostionSprite character,150,78,5 ; show frame number 5</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#GetPackedSprite"><font
+        face="Courier"><strong>GetPackedSprite()</strong></font></a><font
+        face="Courier"><strong><br>
+        </strong></font><a href="#CreateSprite"><font
+        face="Courier"><strong>CreateSprite()</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#LoadSprite"><font face="Courier"><strong>LoadSprite()</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#CopySprite"><font face="Courier"><strong>CopySprite()</strong></font></a><font
+        face="Courier"><strong><br>
+        </strong></font><a href="#LoadFontSet"><font
+        face="Courier"><strong>LoadFontSet()</strong></font></a><font
+        face="Courier"><strong><br>
+        </strong></font><a href="#FreeSprite"><font
+        face="Courier"><strong>FreeSprite</strong></font></a></td>
+    </tr>
+</table>
+
+<p>-</p>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Command</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="RotateSprite"><font size="5"
+        face="Courier"><strong>RotateSprite</strong></font></a></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>sprite</strong></font></td>
+        <td><font face="Courier">pointer to .smSprite instance</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>angle#</strong></font></td>
+        <td><font face="Courier">angle of rotation</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>movedistance#</strong></font></td>
+        <td><font face="Courier">how far to move sprite in
+        direction of angle</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Rotates a sprite by
+        a given angle:<br>
+        </font><div align="center"><center><table border="1"
+        cellpadding="4" cellspacing="0" bgcolor="#FFFFFF"
+        bordercolor="#000000" bordercolordark="#000000"
+        bordercolorlight="#000000">
+            <tr>
+                <td><font face="Tahoma"><strong>Angle</strong></font></td>
+                <td><font face="Tahoma"><strong>Rotation</strong></font></td>
+            </tr>
+            <tr>
+                <td><font face="Tahoma">0/360</font></td>
+                <td><font face="Tahoma">No rotation</font></td>
+            </tr>
+            <tr>
+                <td><font face="Tahoma">90</font></td>
+                <td><font face="Tahoma">Clockwise by 90 degrees</font></td>
+            </tr>
+            <tr>
+                <td><font face="Tahoma">180</font></td>
+                <td><font face="Tahoma">upside down</font></td>
+            </tr>
+            <tr>
+                <td><font face="Tahoma">270</font></td>
+                <td><font face="Tahoma">anti-clockwise by 90
+                degrees</font></td>
+            </tr>
+        </table>
+        </center></div><p><font face="Courier">The sprite is
+        rotated around it's anchor point which can be changed
+        with the </font><a href="#HandleSprite"><font
+        face="Courier"><strong>HandleSprite</strong></font></a><font
+        face="Courier"> command.</font></p>
+        <p><font face="Courier">The optional <em>movedistance#</em>
+        parameter can be used to move the sprite in the direction
+        it is facing. You should design your sprites so that they
+        face to the right by default.<br>
+        Giving the <em>movedistance#</em> a negative value moves
+        the sprite in the opposite direction.</font></p>
+        <p><font face="Courier">Ommitting the <em>angle#</em>
+        parameter rotates the sprite to its default orientation.</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">SpriteGraphics
+        640,480<br>
+        pack=LoadPack(&quot;vehicles.png&quot;)<br>
+        car.smSprite=GetPackedSprite(&quot;car&quot;,pack)<br>
+        PostionSprite car,200,100<br>
+        RotateSprite car,42 ; rotate by 42 degrees.</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#HandleSprite"><font
+        face="Courier"><strong>HandleSprite</strong></font></a><font
+        face="Courier"><strong><br>
+        </strong></font><a href="#ResetSprite"><font
+        face="Courier"><strong>ResetSprite</strong></font></a></td>
+    </tr>
+</table>
+
+<p>-</p>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Function</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="CopySprite"><font size="5"
+        face="Courier"><strong>CopySprite</strong></font></a><font
+        size="5" face="Courier"><strong>()</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>sprite</strong></font></td>
+        <td><font face="Courier">pointer to .smSprite instance</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Copies an existing
+        sprite and returns an type instance pointing to the copy.
+        The copied sprite shares the pack of the referenced
+        sprite.</font><p><font face="Courier">Unlike </font><a
+        href="#GetPackedSprite"><font face="Courier"><strong>GetPackedSprite()</strong></font></a><font
+        face="Courier">, the </font><a href="#CopySprite"><font
+        face="Courier"><strong>CopySprite()</strong></font></a><font
+        face="Courier"> function copies every attribute of the
+        sprite including size, color, alpha, rotation, and flip
+        status.</font></p>
+        <p><font face="Courier">The new sprites name is the same
+        as the copied sprite but with an underscore and new value
+        appended.</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">SpriteGraphics
+        640,480<br>
+        pack=LoadPack(&quot;bricks.png&quot;)<br>
+        sprite.smSprite=GetPackedSprite(&quot;ball&quot;,pack)<br>
+        newsprite.smSprite=CopySprite(sprite)</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#GetPackedSprite"><font
+        face="Courier"><strong>GetPackedSprite()</strong></font></a><font
+        face="Courier"><strong><br>
+        </strong></font><a href="#FreeSprite"><font
+        face="Courier"><strong>FreeSprite</strong></font></a></td>
+    </tr>
+</table>
+
+<p>-</p>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Command</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="ResizeSprite"><font size="5"
+        face="Courier"><strong>ResizeSprite</strong></font></a></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>sprite</strong></font></td>
+        <td><font face="Courier">pointer to .smSprite instance</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>width</strong></font></td>
+        <td><font face="Courier">width in pixels</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>height</strong></font></td>
+        <td><font face="Courier">height in pixels</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Resizes a sprite to
+        new width/height pixel sizes.<br>
+        If the <em>width</em> and <em>height</em> parameters are
+        ommited the sprite is resized to it's default size.</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">SpriteGraphics
+        640,480<br>
+        pack=LoadPack(&quot;bricks.png&quot;)<br>
+        sprite.smSprite=GetPackedSprite(&quot;ball&quot;,pack)<br>
+        ResizeSprite sprite,120,60 ; change size to 120 by 60
+        pixels.</font><p><font face="Courier">NOTE: Resizing
+        sprites causes them to blur. This is down the sprites
+        texture being scaled and thereby losing the
+        pixel&lt;&gt;texel match.</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#ResetSprite"><font
+        face="Courier"><strong>ResetSprite</strong></font></a></td>
+    </tr>
+</table>
+
+<p>-</p>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Command</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="FlipSprite"><font size="5"
+        face="Courier"><strong>FlipSprite</strong></font></a></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>sprite</strong></font></td>
+        <td><font face="Courier">pointer to .smSprite instance</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>horizontally</strong></font></td>
+        <td><font face="Courier">TRUE means flip sprite
+        horizontally</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>vertically</strong></font></td>
+        <td><font face="Courier">TRUE means flip sprite
+        vertically</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Flips the sprite
+        image horizontally and/or vertically.</font><p><font
+        face="Courier">If the <em>horizontally</em> and <em>vertically</em>
+        parameters are omitted the sprites flip status is reset
+        to default.</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">SpriteGraphics
+        640,480<br>
+        tree.smSprite=LoadSprite(&quot;trees.png&quot;)<br>
+        FlipSprite tree,True ; flip the sprite horizontally</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#ResetSprite"><font
+        face="Courier"><strong>ResetSprite</strong></font></a></td>
+    </tr>
+</table>
+
+<p>-</p>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Command</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="HandleSprite"><font size="5"
+        face="Courier"><strong>HandleSprite</strong></font></a></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>sprite</strong></font></td>
+        <td><font face="Courier">pointer to .smSprite instance</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>handleX#</strong></font></td>
+        <td><font face="Courier">handle offset x</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>handleY#</strong></font></td>
+        <td><font face="Courier">handle offset y</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Sets the
+        axis/anchor/hotspot position of a sprite.</font><p><font
+        face="Courier">Postive values in <em>handleX#</em> and <em>handleY#
+        </em>moves the hotspot right and down.<br>
+        Negative values in <em>handleX#</em> and <em>handleY#</em><strong>
+        </strong>moves the hotspot left and up.</font></p>
+        <p><font face="Courier">The hotspot is set by default to
+        the top/left corner of a sprite which gives both handles
+        a value of 0.</font></p>
+        <p><font face="Courier">Ommiting the <em>handleX#</em>
+        parameter centers handle horizontally.<br>
+        Ommiting the <em>handleY#</em> parameter centers handle
+        vertically.</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">SpriteGraphics
+        640,480<br>
+        pack=LoadPack(&quot;partyset.png&quot;)<br>
+        sprite.smSprite=GetPackedSprite(&quot;baloon&quot;,pack)<br>
+        HandleSprite sprite,16,2 ; move hotspot 16 across and 2
+        down</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#ResetSprite"><font
+        face="Courier"><strong>ResetSprite</strong></font></a></td>
+    </tr>
+</table>
+
+<p>-</p>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Command</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="SetSprite"><font size="5"
+        face="Courier"><strong>SetSprite</strong></font></a></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>sprite</strong></font></td>
+        <td><font face="Courier">pointer to .smSprite instance</font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>x#</strong></font></td>
+        <td><font face="Courier">x position (in pixels) on screen</font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>y#</strong></font></td>
+        <td><font face="Courier">y position (in pixels) on screen</font></td>
+    </tr>
+    <tr>
+        <td><font color="#000000" face="Courier"><strong>frame</strong></font></td>
+        <td><font face="Courier">optional frame number for
+        animated sprites.</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>width</strong></font></td>
+        <td><font face="Courier">width (in pixels)</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>height</strong></font></td>
+        <td><font face="Courier">height (in pixels)</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>rotation</strong></font></td>
+        <td><font face="Courier">amount of rotation</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>red</strong></font></td>
+        <td><font face="Courier">red component color (0 to 255)</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>green</strong></font></td>
+        <td><font face="Courier">green component color (0 to 255)</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>blue</strong></font></td>
+        <td><font face="Courier">blue component color (0 to 255)</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>alpha</strong></font></td>
+        <td><font face="Courier">transparency (0.0 to 1.0)</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Applies multiple
+        settings to a sprite. Can save on having to use lots of
+        calls to individual commands. Basically a 'one call does
+        it all'.</font><p><font face="Courier">With this command
+        you can set the sprites frame, position, size, rotation,
+        color, and alpha all within one call.</font></p>
+        <p><font face="Courier">You can use 0 for the
+        width/height which will leave the size of the sprite
+        unchanged.</font></p>
+        <p><font face="Courier">If you use negative values for
+        red/green/blue/alpha then the current settings remain.</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">SpriteGraphics
+        640,480<br>
+        pack=LoadPack(&quot;toys.png&quot;)<br>
+        ball.smSprite=GetPackedSprite(&quot;bigball&quot;,pack)<br>
+        SetSprite ball,1,150,78,0,0,45,255,255,200,0.75</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#PositonSprite"><font
+        face="Courier"><strong>PositionSprite</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#ResizeSprite"><font face="Courier"><strong>ResizeSprite</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#RotateSprite"><font face="Courier"><strong>RotateSprite</strong></font></a><font
+        face="Courier"><strong><br>
+        </strong></font><a href="#SpriteColor"><font
+        face="Courier"><strong>SpriteColor</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#SpriteAlpha"><font face="Courier"><strong>SpriteAlpha</strong></font></a><font
+        face="Courier"><strong><br>
+        </strong></font><a href="#ResetSprite"><font
+        face="Courier"><strong>ResetSprite</strong></font></a></td>
+    </tr>
+</table>
+
+<p>-</p>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Command</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="ChangeSprite"><font size="5"
+        face="Courier"><strong>ChangeSprite</strong></font></a></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>ref$</strong></font></td>
+        <td><font face="Courier">name or index number of sprite
+        in pack</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>rX</strong></font></td>
+        <td><font face="Courier">region - x offset</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>rY</strong></font></td>
+        <td><font face="Courier">region - y offset</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>rW</strong></font></td>
+        <td><font face="Courier">region - width</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>rH</strong></font></td>
+        <td><font face="Courier">region - height</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Changes the image
+        used by a sprite to another.<br>
+        As an example you could change an animated spaceship into
+        an animated explosion.</font><p><font face="Courier">Changing
+        the sprite image still keeps the axis/handle position
+        relative to it's current setting. So, if the handle is
+        centred it will remain so on the newly chosen image.</font></p>
+        <p><font face="Courier">Also, if the current sprite is
+        flipped horizontally and/or vertically this will also be
+        applied to the new sprite image.</font></p>
+        <p><font color="#FF0000" face="Courier">Note: You can
+        only change the image to another from inside the pack
+        used by the current sprite.</font></p>
+        <p><font face="Courier">For a description of the <em>ref$</em>
+        parameter see </font><a href="#GetPackedSprite"><font
+        face="Courier"><strong>GetPackedSprite()</strong></font></a></p>
+        <p><font face="Courier">The optional <em>rX,rY,rW,rH</em>
+        parameters are used to grab a region of a sprite image
+        instead.<br>
+        The <em>rX</em> and <em>rY</em> values are offsets from
+        the top/left of the sprite image. <em>rW</em> and <em>rH</em>
+        determine the width and height of the region.</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">SpriteGraphics
+        640,480<br>
+        pack=LoadPack(&quot;bricks.png&quot;)<br>
+        sprite3.smSprite=GetPackedSprite(3,pack)<br>
+        boxsprite.smSprite=GetPackedSprite(&quot;box&quot;,pack)<br>
+        clip.smSprite=GetPackedSprite(&quot;box&quot;,pack,8,4,10,10)</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#GetPackedSprite"><font
+        face="Courier"><strong>GetPackedSprite()</strong></font></a></td>
+    </tr>
+</table>
+
+<p>-</p>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Command</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="SpriteColor"><font
+        face="Courier"><strong>SpriteColor</strong></font></a></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>sprite</strong></font></td>
+        <td><font face="Courier">pointer to .smSprite instance</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>red</strong></font></td>
+        <td><font face="Courier">red color component (0 to 255)</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>green</strong></font></td>
+        <td><font face="Courier">green color component (0 to 255)</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>blue</strong></font></td>
+        <td><font face="Courier">blue color component (0 to 255)</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>alpha</strong></font></td>
+        <td><font face="Courier">alpha value (0.0 to 1.0)</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Changes the sprites
+        color and alpha settings.</font><p><font face="Courier">If
+        the <em>red </em>/<em> green </em>/<em> blue </em>/<em>
+        alpha</em> parameters are ommitted then the sprite is
+        reset to it's default values of white and opaque.</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">SpriteGraphics
+        640,480<br>
+        pack=LoadPack(&quot;balls.png&quot;)<br>
+        sprite.smSprite=GetPackedSprite(&quot;ball01&quot;,pack)<br>
+        SpriteColor sprite,10,50,30</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#SpriteAlpha"><font
+        face="Courier"><strong>SpriteAlpha</strong></font></a><font
+        face="Courier"><strong> <br>
+        </strong></font><a href="#ResetSprite"><font
+        face="Courier"><strong>ResetSprite</strong></font></a></td>
+    </tr>
+</table>
+
+<p>-</p>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Command</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="SpriteAlpha"><font size="5"
+        face="Courier"><strong>SpriteAlpha</strong></font></a></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>sprite</strong></font></td>
+        <td><font face="Courier">pointer to .smSprite instance</font></td>
+    </tr>
+    <tr>
+        <td><font color="#808080" face="Courier"><strong>alpha</strong></font></td>
+        <td><font face="Courier">alpha value (0.0 to 1.0)</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Changes the sprites
+        alpha settings.</font><p><font face="Courier">If the <em>alpha</em>
+        parameter is ommitted then the sprite is reset to it's
+        default alpha value of 1.0 (opaque).</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">SpriteGraphics
+        640,480<br>
+        pack=LoadPack(&quot;balls.png&quot;)<br>
+        sprite.smSprite=GetPackedSprite(&quot;ball01&quot;,pack)<br>
+        SpriteAlpha sprite,0.5 ; half transparent</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#SpriteColor"><font
+        face="Courier"><strong>SpriteColor</strong></font></a><font
+        face="Courier"><strong><br>
+        </strong></font><a href="#ResetSprite"><font
+        face="Courier"><strong>ResetSprite</strong></font></a></td>
+    </tr>
+</table>
+
+<p>-</p>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Command</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="ResetSprite"><font size="5"
+        face="Courier"><strong>ResetSprite</strong></font></a></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>sprite</strong></font></td>
+        <td><font face="Courier">pointer to .smSprite instance</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Resets a sprite back
+        to default. This includes size, rotation, flipped status,
+        color, and alpha.</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">SpriteGraphics
+        640,480<br>
+        sprite.smSprite=LoadSprite(&quot;ball.png&quot;)<br>
+        RotateSprite sprite,Rand(360)<br>
+        ResizeSprite sprite,Rand(100),Rand(100)<br>
+        SpriteColor sprite,Rand(255),Rand(255),Rand(255),Rnd(1)<br>
+        ResetSprite sprite</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2">&nbsp;</td>
+    </tr>
+</table>
+
+<p>- </p>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Function</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="SpritesOverlap"><font size="5"
+        face="Courier"><strong>SpritesOverlap</strong></font></a><font
+        size="5" face="Courier"><strong>()</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>sprite1</strong></font></td>
+        <td><font face="Courier">pointer to .smSprite instance</font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>sprite2</strong></font></td>
+        <td><font face="Courier">pointer to .smSprite instance</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Returns <strong>TRUE</strong>
+        if 2 existing sprites are overlapping.<br>
+        The function does not take the 'shape' of the sprite into
+        account. Only the rectangular area used to display the
+        sprite.<br>
+        However, the function works fine with sprites which have
+        been rotated, resized, and/or flipped.</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">SpriteGraphics
+        640,480<br>
+        pack=LoadPack(&quot;pack1.png&quot;)<br>
+        sprite1.smSprite=GetPackedSprite(&quot;sun&quot;,pack)<br>
+        sprite2.smSprite=GetPackedSprite(&quot;moon&quot;,pack)</font><p><font
+        face="Courier">PositionSprite sprite1,Rand(100),Rand(100)<br>
+        PositionSprite sprite2,Rand(100),Rand(100)</font></p>
+        <p><font face="Courier">DebugLog
+        SpritesCollide(sprite1,sprite2)</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2">&nbsp;</td>
+    </tr>
+</table>
+
+<p>- </p>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Function</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="GetSpriteMesh"><font size="5"
+        face="Courier"><strong>GetSpriteMesh</strong></font></a><font
+        size="5" face="Courier"><strong>()</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>sprite</strong></font></td>
+        <td><font face="Courier">pointer to .smSprite instance</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Returns the mesh
+        used by the sprite</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">SpriteGraphics
+        640,480<br>
+        pack=LoadPack(&quot;pack1.png&quot;)<br>
+        sprite.smSprite=GetPackedSprite(&quot;sun&quot;,pack)<br>
+        mesh=GetSpriteMesh(sprite)</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#GetSpriteTexture"><font
+        face="Courier"><strong>GetSpriteTexture()</strong></font></a></td>
+    </tr>
+</table>
+
+<p>-</p>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Command</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="SpriteTexture"><font size="5"
+        face="Courier"><strong>SpriteTexture</strong></font></a></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>sprite</strong></font></td>
+        <td><font face="Courier">pointer to .smSprite instance</font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>texture</strong></font></td>
+        <td><font face="Courier">Handle to an existing texture</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Changes the texture
+        used by a sprite.</font><p><font face="Courier">Note:
+        This will affect any sprites sharing the texture such as
+        those created with:</font></p>
+        <blockquote>
+            <p><a href="#CopySprite"><font face="Courier"><strong>CopySprite()</strong></font></a><font
+            face="Courier"><strong><br>
+            </strong></font><a href="#GetPackedSprite"><font
+            face="Courier"><strong>GetPackedSprite()</strong></font></a></p>
+        </blockquote>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">sprite.smSprite=CreateSprite(64,80)<br>
+        texture=LoadTexture(&quot;tree.png&quot;)<br>
+        SpriteTexture sprite,texture</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#GetSpriteTexture"><font
+        face="Courier"><strong>GetSpriteTexture()</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#GetPackedTexture"><font face="Courier"><strong>GetPackedTexture()</strong></font></a></td>
+    </tr>
+</table>
+
+<p>-</p>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Function</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="GetSpriteTexture"><font size="5"
+        face="Courier"><strong>GetSpriteTexture</strong></font></a><font
+        size="5" face="Courier"><strong>()</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>sprite</strong></font></td>
+        <td><font face="Courier">pointer to .smSprite instance</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Returns the handle
+        of the texture used by the sprite</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">sprite.smSprite=LoadSprite(&quot;sun.png&quot;)<br>
+        texture=GetSpriteTexture(sprite)</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#SpriteTexture"><font
+        face="Courier"><strong>SpriteTexture</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#GetPackedTexture"><font face="Courier"><strong>GetPackedTexture()</strong></font></a></td>
+    </tr>
+</table>
+
+<hr>
+
+<p><a href="index.htm"><font face="Tahoma">Main Page</font></a></p>
+</body>
+</html>

@@ -1,0 +1,9 @@
+html						{ background: #000 url(images/background.png) no-repeat center top; color: #F5F5F5 }
+body					{ position: relative; margin: 0 auto; width: 820px; height: 860px; font-family: verdana, helvetica, arial, sans-serif; font-size: 14px }
+a						{ text-decoration: none; color: #F5F5F5 }
+a:hover					{ text-decoration: underline }
+p						{ position: absolute; bottom: 0; width: 100%; text-align: center; text-shadow: 0 1px 1px #000; }
+
+#logo					{ width: 512px; margin: 0 auto; display: block }
+#key					{ position: absolute; top: 387px; left: 50%; margin-left: -67px; cursor: pointer }
+#game					{ display: none; margin: 0; padding: 10px; width: 800px; height: 480px; background: transparent url(images/border.png) no-repeat top center }

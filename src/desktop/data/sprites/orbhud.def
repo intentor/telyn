@@ -1,0 +1,34 @@
+orbhud.png
+{
+	background
+	0
+	0
+	50
+	50
+	0
+	0
+	0
+	0
+}
+{
+	emptyOrb
+	50
+	0
+	8
+	8
+	0
+	0
+	0
+	0
+}
+{
+	filledOrb
+	50
+	8
+	8
+	8
+	0
+	0
+	0
+	0
+}

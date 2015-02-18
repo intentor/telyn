@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="no"?>
+<project default="dist" basedir="." name="Telyn">
+	<description>
+		Telyn Builder
+    </description>	
+	
+	<property name="dist"  location="dist"/>
+	<property name="build" location="${dist}/build"/>
+	
+	<target name="init">
+		<delete dir="${dist}"/>
+		<mkdir dir="${dist}"/>
+		<mkdir dir="${build}"/>
+	</target>  
+	
+	<target name="compile" depends="init">
+		<javac srcdir="src"
+			destdir="${build}"
+			classpath="libs/JBox2D-2.0.1-b250-Library.jar;libs/jinput.jar;libs/jogg-0.0.7.jar;libs/jorbis-0.0.15.jar;libs/lwjgl.jar;libs/slick.jar"/>
+	</target>
+
+	<target name="dist" depends="compile" description="Gera o pacote de distribuição do jogo Telyn.">
+		<jar jarfile="${dist}/desktop/telyn.jar" basedir="${build}">
+			<manifest>
+				<!-- Informações do jogo -->
+				<attribute name="Built-By" value="Escape2Team"/>
+				<attribute name="Implementation-Title" value="Telyn"/>
+				<attribute name="Implementation-Vendor" value="Escape2Team"/>
+				<attribute name="Implementation-Version" value="beta1"/>
+				<!-- Informações de execução -->
+				<attribute name="Main-Class" value="org.escape2team.telyn.states.Loader"/>
+				<attribute name="Class-Path" value="libs/core.jar libs/jinput.jar libs/jogg-0.0.7.jar libs/jorbis-0.0.15.jar libs/lwjgl.jar"/>
+            </manifest>
+            <zipfileset dir="." includes="data/**" excludes="**/.svn"/>
+		</jar>
+		<!--Desktop-->
+		<copy todir="${dist}/desktop">
+			<fileset dir="../support/run/desktop" excludes="**/.svn"/>
+		</copy>
+		<copy todir="${dist}/desktop/native">
+			<fileset dir="native" excludes="**/.svn"/>
+		</copy>
+		<delete dir="${build}"/>
+		<!--Web-->
+		<copy file="${dist}/desktop/telyn.jar" tofile="${dist}/applet/telyn.jar"/>		
+		<copy todir="${dist}/applet">
+			<fileset dir="../support/run/applet" excludes="**/.svn"/>
+		</copy>
+	</target>
+</project>

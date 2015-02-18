@@ -1,0 +1,98 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>SpriteMaster Pro - Introduction</title>
+</head>
+
+<body>
+
+<h1><font face="Tahoma">SpriteMaster Pro</font></h1>
+
+<h3><font face="Tahoma">Introduction</font></h3>
+
+<hr>
+
+<p align="center"><font face="Courier"><img src="smpro0.jpg"
+width="256" height="205"></font></p>
+
+<p><font face="Courier">SpriteMaster Pro is a sprite display tool
+for handling both single-surface and separate-surface sprites
+using a pixel-perfect sprite quads.</font></p>
+
+<p><font face="Courier">The sprites are displayed at pixel
+positions and viewed at the correct image size.</font></p>
+
+<p><font face="Courier">SpriteMaster Pro is designed for use with
+<strong>Image Packer</strong>. This tool is used to pack multiple
+images into one large image. When saved, the image pack can be
+handled by SpriteMaster Pro. Any amount of sprites can be
+extracted from the pack.</font></p>
+
+<p><font face="Courier">Some of the features of SpriteMaster Pro:</font></p>
+
+<ul>
+    <li><font face="Courier">Single-Surface pixel-perfect sprites</font></li>
+    <li><font face="Courier">Display at 2D pixel coordinates</font></li>
+    <li><font face="Courier">Resize , flip, re-color, change
+        alpha</font></li>
+    <li><font face="Courier">Perform collision checks against
+        other sprites</font></li>
+    <li><font face="Courier">Fast in operation</font></li>
+    <li><font face="Courier">35 commands / functions</font></li>
+</ul>
+
+<hr>
+
+<h3><font face="Courier">About surfaces</font></h3>
+
+<p><font face="Courier">SpriteMaster Pro can be used to display
+sprites using a minimal amount of surfaces.<br>
+Using lots of surfaces can have a drastic effect on the game
+speed.<br>
+Here is how SpriteMaster Pro uses surfaces:</font></p>
+
+<p><a href="sm_commands.htm#LoadPack"><font face="Courier"><strong>LoadPack()</strong></font></a></p>
+
+<blockquote>
+    <p><font face="Courier">Each pack uses one surface. Sprites
+    extracted from the pack using </font><a
+    href="sm_commands.htm#GetPackedSprite"><font face="Courier"><strong>GetPackedSprite()</strong></font></a><font
+    face="Courier"> will share this surface. Using </font><a
+    href="sm_commands.htm#CopySprite"><font face="Courier"><strong>CopySprite()</strong></font></a><font
+    face="Courier"> will also share the surface of the sprite
+    being copied.</font></p>
+</blockquote>
+
+<p><a href="sm_commands.htm#LoadSprite"><font face="Courier"><strong>LoadSprite()</strong></font></a><font
+face="Courier"><strong> </strong>/<strong> </strong></font><a
+href="sm_commands.htm#CreateSprite"><font face="Courier"><strong>CreateSprite()</strong></font></a></p>
+
+<blockquote>
+    <p><font face="Courier">Creates a new pack containing one
+    surface. If you use </font><a
+    href="sm_commands.htm#CopySprite"><font face="Courier"><strong>CopySprite()</strong></font></a><font
+    face="Courier"> or </font><a
+    href="sm_commands.htm#GetPackedSprite"><font face="Courier"><strong>GetPackedSprite()</strong></font></a><font
+    face="Courier"> then the new sprite will share the surface of
+    the loaded/created one.</font></p>
+</blockquote>
+
+<p><a href="sm_commands.htm#CreateTextSprite"><font
+face="Courier"><strong>CreateTextSprite()</strong></font></a></p>
+
+<blockquote>
+    <p><font face="Courier">Creates a new pack containing one
+    surface. This is special text sprite. All characters
+    displayed in the text sprite using </font><a
+    href="sm_commands.htm#AddText"><font face="Courier"><strong>AddText</strong></font></a><font
+    face="Courier"> will use this surface.</font></p>
+</blockquote>
+
+<hr>
+
+<p><a href="index.htm"><font face="Tahoma">Main Page</font></a></p>
+</body>
+</html>

@@ -1,0 +1,94 @@
+This quick guide is intended to aid current SpriteMaster users in switching to SpriteMaster Pro.
+There are some significant changes bewtween the two. Lots of functions have been stripped because they are no longer needed.
+
+
+The BIG difference is the way SpriteMaster Pro handles sprites.
+In SpriteMaster, the sprite variables are simply index numbers holding the handle of a type instance for the associated sprite.
+In SpriteMaster Pro the variable handling the sprite is a .smSprite type.
+
+This should make things a little clearer ...
+
+
+In SpriteMaster, you do this:
+
+mypack=LoadSpritePack("mypack.png")
+sprite=GetPackedSprite("ball".mypack)
+PositionSprite sprite,50,40
+
+In SpriteMaster Pro you now need to do:
+
+mypack=LoadPack("mypack.png")
+sprite.smSprite=GetPackedSprite("ball",mypack)
+PositionSprite sprite,50,40
+
+Note: You only need to add the .smSprite when creating/loading sprites.
+See how 'PositionSprite' still looks the same.
+
+The major benefit of using the type method is I can do away with lots of functions. You now have direct access to the sprite settings by looking into it's type stucture.
+This gives a much cleaner approach:
+
+mypack=LoadPack("mypack.png")
+sprite.smSprite=GetPackedSprite("ball".mypack)
+PositionSprite sprite,Rand(40),Rand(70)
+RotateSprite sprite,Rand(360)
+DebugLog sprite\x     ; sprites x position
+DebugLog sprite\y     ; sprites y position
+DebugLog sprite\angle ; sprites angle
+
+
+
+
+Other important changes:
+------------------------
+
+The include is now called 'smPro.bb'
+
+
+
+Added:
+======
+CreateSpritePivot()
+CreateSprite()
+LoadSprite()
+GetPack()
+GetPackedImage()
+GetPackedTexture()
+GetPackImageName$()
+LoadFontSet()
+SpriteText
+SetSprite
+ChangeSprite
+SpritesOverlap()
+PackedImageName$()
+PackedImageFrames()
+
+Changed:
+========
+LoadPack()           ; was called LoadSpritePack()
+FreePack             ; was called FreeSpritePack
+GetPackedSprite()    ; now has region params
+CountPackedImages()  ; was called CountPackedSprites()
+SpriteName$()        ; only deals with packs now
+
+Fixes:
+======
+RotateSprite  ; now smoother (Try 'smPro - RotateSprite.bb' demo)
+FlipSprite    ; flips texture coords instead of verts
+HandleSprite  ; works correctly now
+
+Removed:
+========
+SpriteFrame()       - use sprite\frame
+SpriteName$()       - use sprite\name$
+SpriteAngle()       - use sprite\angle
+SpriteX()           - use sprite\x
+SpriteY()           - use sprite\y
+SpriteWidth()       - use sprite\width
+SpriteHeight()      - use sprite\height
+SpriteXHandle()     - use sprite\handleX
+SpriteYHandle()     - use sprite\handleY
+CountSpriteFrames() - use sprite\numframes
+SpriteRed()         - use sprite\red
+SpriteGreen()       - use sprite\green
+SpriteBlue()        - use sprite\blue
+GetSpriteAlpha()    - use sprite\alpha

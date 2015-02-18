@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" 
+   "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br">
+    <head>
+	<head>
+		<title>Telyn</title>						
+		
+		<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1" />
+		<meta http-equiv="Content-Language" content="pt-br" />
+		
+		<meta name="title" content="Telyn" />
+		<meta name="copyright" content="Copyright © 2011 Escape2Team" />
+		<meta name="author" content="André Martins e Gabriel Roque" />
+		<meta name="description" content="Telyn, jogo de plataforma 2D baseado na Mitologia Celta." />
+		<meta name="keywords" content="Jogo, Game, Mitologia Celta, Druida, Java, Android, OpenGL" />
+		
+		<link rel="shortcut icon" href="icon.png" />
+		<link rel="stylesheet" href="index.css" type="text/css" media="all" />
+		
+		<script type="text/javascript" src="jquery-1.6.2.min.js"></script>
+		<script type="text/javascript">			
+			$(document).ready(function() {
+				$('#key').click(function() { 
+					$('#key').fadeOut('slow', function() {
+						$('#game').show();
+					});
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<img id="logo" src="images/logo.png" alt="Telyn" />
+		<img id="key" src="images/key.png" alt="Telyn" />
+		<div id="game">
+			<applet code="org.lwjgl.util.applet.AppletLoader" archive="libs/lwjgl_util_applet.jar" codebase="." width="800" height="480">
+				<param name="al_title" value="telyn" />
+				<param name="al_main" value="org.newdawn.slick.AppletGameContainer" />
+				<param name="al_version" value="0.1" />
+				<param name="game" value="org.escape2team.telyn.states.Loader" />
+				<param name="al_logo" value="logo.png" />
+				<param name="al_progressbar" value="appletprogress.gif" />
+				<param name="al_jars" value="telyn.jar, libs/core.jar, libs/jinput.jar, libs/jogg-0.0.7.jar, libs/jorbis-0.0.15.jar, libs/lwjgl.jar, libs/lwjgl_util.jar" />
+				<param name="al_windows" value="libs/windows_natives.jar" />
+				<param name="al_linux" value="libs/linux_natives.jar" />
+				<param name="java_arguments" value="-Xmx256m -Dsun.java2d.noddraw=true" />
+				<param name="separate_jvm" value="true" />
+			</applet>
+		</div>
+		<p>
+			2011 <strong>Escape2Team</strong> - 
+			<a href="http://intentor.com.br/" target="_blank">André "Intentor" Martins</a> e 
+			<a href="http://twitter.com/gamaroque/" target="_blank">Gabriel Roque</a> 
+		</p>
+	</body>
+</html>

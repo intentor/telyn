@@ -1,0 +1,177 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>SpriteMaster Pro - Getting Started</title>
+</head>
+
+<body>
+
+<h1><font face="Tahoma">SpriteMaster Pro</font></h1>
+
+<h3><font face="Tahoma">Getting Started</font></h3>
+
+<hr>
+
+<p><font face="Courier">The best way to understand how to use
+ImageMaster is to play with the examples. Most of the commands
+are covered by an example.</font></p>
+
+<p><font face="Courier">What follows is a step by step guide to
+get you up and running.</font></p>
+
+<hr>
+
+<p><font face="Courier">The first thing you should to do is
+include the ImageMaster include file. The name of this file is </font><font
+color="#808080" face="Courier"><strong>ImageMaster.bb</strong></font></p>
+
+<table border="0" bgcolor="#000000">
+    <tr>
+        <td><font color="#00FF00" face="Courier">Include
+        &quot;ImageMaster.bb&quot;</font></td>
+    </tr>
+</table>
+
+<hr>
+
+<p><font color="#000000" face="Courier">Now, you initialse the
+display with:</font></p>
+
+<table border="0" bgcolor="#000000">
+    <tr>
+        <td><font color="#00FF00" face="Courier">Graphics
+        width,height<br>
+        SetBuffer BackBuffer()</font></td>
+    </tr>
+</table>
+
+<hr>
+
+<p><font color="#000000" face="Courier">Once the display is set
+up you can go ahead and load a pack. </font></p>
+
+<table border="0" bgcolor="#000000">
+    <tr>
+        <td><font color="#00FF00" face="Courier">pack=</font><a
+        href="im_commands.htm#LoadPack"><font color="#00FF00"
+        face="Courier">LoadPack</font></a><font color="#00FF00"
+        face="Courier">(&quot;mypack.png&quot;)</font></td>
+    </tr>
+</table>
+
+<hr>
+
+<p><font color="#000000" face="Courier">Your next step is to
+extract whatever image(s) you like from the pack:</font></p>
+
+<table border="0" bgcolor="#000000">
+    <tr>
+        <td><font color="#00FF00" face="Courier">ball=</font><a
+        href="im_commands.htm#GetPackedImage"><font
+        color="#00FF00" face="Courier">GetPackedImage</font></a><font
+        color="#00FF00" face="Courier">(&quot;bigball&quot;,pack)</font></td>
+    </tr>
+</table>
+
+<hr>
+
+<p><font color="#000000" face="Courier">Now it's just a matter of
+drawing the image using DrawImage and flipping the display
+buffers, waiting for a key press, or whatever you wish to do.
+Here is a basic example:</font></p>
+
+<table border="0" bgcolor="#000000">
+    <tr>
+        <td><font color="#00FF00" face="Courier">; ImageMaster -
+        Basic example<br>
+        <br>
+        Include &quot;ImageMaster.bb&quot;<br>
+        <br>
+        Graphics 230,240,0,2 ; set up sprite display<br>
+        SetBuffer BackBuffer()<br>
+        pack1=LoadPack(&quot;testpack.png&quot;) ; load pack<br>
+        image=GetPackedImage(&quot;sun&quot;,pack1) ; extract
+        image<br>
+        DrawImage image,50,60 ; draw image to buffer<br>
+        <br>
+        Flip : WaitKey<br>
+        <br>
+        FreePack pack1 ; free up the pack<br>
+        EndGraphics ; close down display<br>
+        End</font></td>
+    </tr>
+</table>
+
+<p><font color="#000000" face="Courier">A thing to note about
+animated images ...<br>
+In SpriteMasterPro animated sprites use 1 as the first frame.<br>
+In ImageMaster the first frame in an animated image is 0.</font></p>
+
+<p><font color="#000000" face="Courier">You can find the last
+frame by using </font><a href="im_commands.htm#PackedImageFrames"><font
+color="#000000" face="Courier"><strong>PackedImageFrames()</strong></font></a><font
+color="#000000" face="Courier"><br>
+This function will return the total number of frames in an
+animated image. So, the range of frames starts from 0 and ends at
+PackedImageFrames()-1</font></p>
+
+<p><font color="#000000" face="Courier">You might want to follow
+SpriteMasterPro by using 1 as the first frame and
+PackedImageFrames() as the last frame. Then it's just a matter of
+using frame-1 for the <strong>DrawImage </strong><em>frame</em>
+parameter.</font></p>
+
+<p><font color="#000000" face="Courier">Example of using an
+animated image:</font></p>
+
+<table border="0" bgcolor="#000000">
+    <tr>
+        <td><font color="#00FF00" face="Courier">; ImageMaster -
+        Animation example<br>
+        <br>
+        Include &quot;ImageMaster.bb&quot;<br>
+        <br>
+        Graphics 640,480,0,2 ; set up display<br>
+        SetBuffer BackBuffer()</font><p><font color="#00FF00"
+        face="Courier">pack1=LoadPack(&quot;testpack.png&quot;)<br>
+        runner=GetPackedImage(&quot;runner&quot;,pack1)<br>
+        numframes=PackedImageFrames(&quot;runner&quot;,pack1)<br>
+        FreePack pack1</font></p>
+        <p><font color="#00FF00" face="Courier">frame=1</font></p>
+        <p><font color="#00FF00" face="Courier">Repeat</font></p>
+        <p><font color="#00FF00" face="Courier">count=count+1<br>
+        If count mod 6=0<br>
+        If frame=numframes+1 frame=1<br>
+        EndIf</font></p>
+        <p><font color="#00FF00" face="Courier">DrawImage
+        runner,50,50,frame-1</font></p>
+        <p><font color="#00FF00" face="Courier">Flip</font></p>
+        <p><font color="#00FF00" face="Courier">Until KeyHit(1)<br>
+        <br>
+        End</font></p>
+        </td>
+    </tr>
+</table>
+
+<hr>
+
+<p><font color="#000000" face="Courier">It's worth pointing out
+that once you have extracted all the images you want from a pack
+you can free up the pack with a call to:</font></p>
+
+<table border="0" bgcolor="#000000">
+    <tr>
+        <td><a href="im_commands.htm#FreePack"><font
+        color="#00FF00" face="Courier">FreePack</font></a><font
+        color="#00FF00" face="Courier"> pack1</font></td>
+    </tr>
+</table>
+
+<hr>
+
+<p><a href="index.htm"><font face="Tahoma">Main Page</font></a></p>
+</body>
+</html>

@@ -1,0 +1,370 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>SpriteMaster - Commands (in detail)</title>
+</head>
+
+<body>
+
+<h1><font face="Tahoma">SpriteMaster Pro</font></h1>
+
+<p>&nbsp;</p>
+
+<h3><font face="Tahoma">Commands and Functions (in detail)</font></h3>
+
+<hr>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Function</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="LoadPack"><font size="5"
+        face="Courier"><strong>LoadPack</strong></font></a><font
+        size="5" face="Courier"><strong>()</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>filename$</strong></font></td>
+        <td><font face="Courier">name of pack image to load</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Loads an image pack
+        and returns an index number pointing to the pack.</font><p><font
+        face="Courier">The pack needs an associated *.def file to
+        work correctly. See the <strong>Image Packer</strong>
+        tool.</font></p>
+        <p><font face="Courier">Once the pack is loaded you can
+        extract as many images as required using </font><a
+        href="#GetPackedImage"><font face="Courier"><strong>GetPackedImage()</strong></font></a></p>
+        <p><font face="Courier">To free the pack use </font><a
+        href="#FreePack"><font face="Courier"><strong>FreePack</strong></font></a><font
+        face="Courier">.</font></p>
+        <p><font face="Courier">You can use </font><a
+        href="#CountPackedImages"><font face="Courier"><strong>CountPackedImages()</strong></font></a><font
+        face="Courier"> to return the number of individual images
+        in the pack.</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Graphics 640,480<br>
+        pack=LoadPack(&quot;bricks.png&quot;)<br>
+        image=GetPackedImage(&quot;brick1&quot;,pack)</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#FreePack"><font face="Courier"><strong>FreePack</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#CountPackedImages"><font face="Courier"><strong>CountPackedImages()</strong></font></a></td>
+    </tr>
+</table>
+
+<p>-</p>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Command</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="FreePack"><font size="5"
+        face="Courier"><strong>FreePack</strong></font></a></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>pack</strong></font></td>
+        <td><font face="Courier">pack index to free</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Frees up an existing
+        pack.<br>
+        This can be called one you have extracted all of your
+        images using </font><a href="#GetPackedImage"><font
+        face="Courier"><strong>GetPackedImage()</strong></font></a></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Graphics 640,480<br>
+        SetBuffer BackBuffer()<br>
+        pack=LoadPack(&quot;bricks.png&quot;)<br>
+        image=GetPackedImage(&quot;brick1&quot;,pack)<br>
+        FreePack pack</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#LoadPack"><font face="Courier"><strong>LoadPack()</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#GetPackedImage"><font face="Courier"><strong>GetPackedImage()</strong></font></a></td>
+    </tr>
+</table>
+
+<p>-</p>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Function</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="GetPackedImage"><font size="5"
+        face="Courier"><strong>GetPackedImage</strong></font></a><font
+        size="5" face="Courier"><strong>()</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>ref$</strong></font></td>
+        <td><font face="Courier">name or index number of image in
+        pack</font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>pack</strong></font></td>
+        <td><font face="Courier">which pack to extract image from</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Gets / extracts a 2D
+        image from a existing pack and returns the handle to the
+        image.<br>
+        The <strong>def$</strong> value which can be used in 2
+        ways:</font><p><font face="Courier"><u>1) Images by index
+        number:</u><br>
+        myimage=GetPackedImage(4,pack)<br>
+        Gets the <strong>4th</strong> image in the pack.<br>
+        This is useful if you wish to extract all images into an
+        array.<br>
+        One thing to bear in mind though, if you use <strong>Image
+        Packer</strong> to modify the pack then the images in the
+        pack are likely to be jumbled. This will cause the index
+        numbers to refer to different images.</font></p>
+        <p><font face="Courier"><u>2) Images name:</u><br>
+        image=GetPackedImage(&quot;car&quot;,pack)<br>
+        Gets the image called <strong>car</strong> from the pack.
+        This name is set within <strong>Image Packer</strong>.
+        The name is always lowercase and without spaces.</font></p>
+        <p><font face="Courier">Once you have your extracted the
+        image the pack can be freed up with </font><a
+        href="#FreePack"><font face="Courier"><strong>FreePack</strong></font></a><font
+        face="Courier">.</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Graphics 640,480<br>
+        SetBuffer BackBuffer()<br>
+        pack=LoadPack(&quot;toys.png&quot;)<br>
+        image=GetPackedImage(&quot;spinningtop&quot;,pack)<br>
+        DrawImage image,60,70<br>
+        Flip : WaitKey<br>
+        FreePack pack<br>
+        End</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#FreePack"><font face="Courier"><strong>FreePack</strong></font></a></td>
+    </tr>
+</table>
+
+<p>-</p>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Function</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="CountPackedImages"><font
+        size="5" face="Courier"><strong>CountPackedImages</strong></font></a><font
+        size="5" face="Courier"><strong>()</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>pack</strong></font></td>
+        <td><font face="Courier">pack to count images from</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Returns the number
+        of images in a pack.</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Graphics 640,480<br>
+        SetBuffer BackBuffer()<br>
+        pack=LoadPack(&quot;bricks.png&quot;)<br>
+        num=CountPackedImages(pack)</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#LoadPack"><font face="Courier"><strong>LoadPack()</strong></font></a></td>
+    </tr>
+</table>
+
+<p>-</p>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Function</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="PackedImageName"><font size="5"
+        face="Courier"><strong>PackedImageName$</strong></font></a><font
+        size="5" face="Courier"><strong>()</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>index</strong></font></td>
+        <td><font face="Courier">index number of image in pack</font></td>
+    </tr>
+    <tr>
+        <td><font color="#000000" face="Courier"><strong>pack</strong></font></td>
+        <td><font face="Courier">which pack</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">This function
+        returns the name of an image in a pack.<br>
+        The image is accessed via an index number.<br>
+        The first image in a pack is index number 1.<br>
+        The last image can be found by using </font><a
+        href="#CountPackedImages"><font face="Courier"><strong>CountPackedImages()</strong></font></a><font
+        face="Courier"> which returns the total number of images
+        in a pack.</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Graphics 640,480<br>
+        SetBuffer BackBuffer()<br>
+        pack=LoadPack(&quot;bricks.png&quot;)<br>
+        num=CountPackedImages(pack)</font><p><font face="Courier">For
+        i=1 to num<br>
+        DebugLog PackedImageName$(i,pack)<br>
+        Next</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#LoadPack"><font face="Courier"><strong>LoadPack()</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#CountPackedImages"><font face="Courier"><strong>CountPackedImages()</strong></font></a><font
+        face="Courier"><strong> , </strong></font><a
+        href="#PackedImageFrames"><font face="Courier"><strong>PackedImageFrames()</strong></font></a></td>
+    </tr>
+</table>
+
+<p>-</p>
+
+<table border="1" cellpadding="4" cellspacing="0" width="80%"
+bgcolor="#C0C0C0" bordercolor="#000000" bordercolordark="#000000"
+bordercolorlight="#000000">
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Function</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a name="PackedImageFrames"><font
+        size="5" face="Courier"><strong>PackedImageFrames</strong></font></a><font
+        size="5" face="Courier"><strong>()</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Parameters</strong></font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>ref$</strong></font></td>
+        <td><font face="Courier">name or index number of image in
+        pack</font></td>
+    </tr>
+    <tr>
+        <td><font face="Courier"><strong>pack</strong></font></td>
+        <td><font face="Courier">which pack</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Description</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Returns the number
+        of animation frames in a packed image from the specified
+        pack.</font><p><font face="Courier">If the image has no
+        animation then a value of 1 is returned.</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>Example</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><font face="Courier">Graphics 640,480<br>
+        SetBuffer BackBuffer()<br>
+        pack=LoadPack(&quot;spaceships.png&quot;)<br>
+        DebugLog PackedImageFrames(&quot;ship1&quot;,pack)</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" bgcolor="#58B3DE"><font face="Tahoma"><strong>See
+        also</strong></font></td>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="#PackedImageName"><font
+        face="Courier"><strong>PackedImageName$()</strong></font></a></td>
+    </tr>
+</table>
+
+<hr>
+
+<p><a href="index.htm"><font face="Tahoma">Main Page</font></a></p>
+</body>
+</html>
